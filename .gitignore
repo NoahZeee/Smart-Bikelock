@@ -1,3 +1,16 @@
+# PlatformIO
+firmware/.pio/
+firmware/.vscode/
+
+# Build artifacts
+*.elf
+*.bin
+*.hex
+
+# OS
+.DS_Store
+Thumbs.db
+
 # Compiled files
 build/
 *.o
