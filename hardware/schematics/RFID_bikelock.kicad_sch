@@ -1,0 +1,292 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "31a5fa84-3cda-422e-acc0-ce6e3fdccec6")
+	(paper "A4")
+	(lib_symbols)
+	(text "Lock PWM control signal"
+		(exclude_from_sim no)
+		(at 193.294 78.994 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "7a5c47c6-68d1-4858-8611-434d534e2e1e")
+	)
+	(text "I2C connectors"
+		(exclude_from_sim no)
+		(at 113.284 72.898 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "eabd7f50-a651-4da5-a0a9-bce15da4041f")
+	)
+	(wire
+		(pts
+			(xy 95.25 77.47) (xy 132.08 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "38d800ab-1132-45af-9d1a-9d7949d1d28a")
+	)
+	(wire
+		(pts
+			(xy 179.07 81.28) (xy 208.28 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5fc2a7e0-88dd-415d-8277-5451297a15f2")
+	)
+	(wire
+		(pts
+			(xy 95.25 74.93) (xy 132.08 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce9d6530-b922-4fb5-b19a-4f719a510937")
+	)
+	(sheet
+		(at 208.28 53.34)
+		(size 45.72 43.18)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "6af81104-f699-40fe-9eda-91b5cc8cec2f")
+		(property "Sheetname" "Servo Assembly"
+			(at 208.28 52.6284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "servo_assembly.kicad_sch"
+			(at 208.28 97.1046 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "LOCK_CTRL" input
+			(at 208.28 81.28 180)
+			(uuid "84178e31-56f4-4e12-9242-7398c9fe0524")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "RFID_bikelock"
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 46.99 119.38)
+		(size 44.45 43.18)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "a061662f-ab83-4e0b-ae17-4060e18ae3e9")
+		(property "Sheetname" "power_supply"
+			(at 46.99 118.6684 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power_supply.kicad_sch"
+			(at 46.99 163.1446 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "RFID_bikelock"
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 132.08 52.07)
+		(size 46.99 45.72)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "d1de3c53-0379-4104-a0c0-5b28f7a9a0af")
+		(property "Sheetname" "microcontroller"
+			(at 132.08 51.3584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "microcontroller.kicad_sch"
+			(at 132.08 98.3746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "LOCK_CTRL" output
+			(at 179.07 81.28 0)
+			(uuid "6dbd74ac-b893-40ee-9422-748c4c04ebcd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "SDA" input
+			(at 132.08 77.47 180)
+			(uuid "b9aebca0-009d-4be2-91ef-dbc08242c49a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SLC" input
+			(at 132.08 74.93 180)
+			(uuid "9ceb095a-523c-493e-b1d7-b8aa5cdb96c0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "RFID_bikelock"
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 46.99 50.8)
+		(size 48.26 46.99)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "f7083b0f-48fd-4c7d-b050-7171e050a775")
+		(property "Sheetname" "RFID_sensor"
+			(at 46.99 50.0884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "rfid_sensor.kicad_sch"
+			(at 46.99 98.3746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "SCL" output
+			(at 95.25 74.93 0)
+			(uuid "8c98a996-6211-4461-8676-59b5788f3c6e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "SDA" output
+			(at 95.25 77.47 0)
+			(uuid "7647c428-6724-4bc9-b3c5-fb84f1ab04fe")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "RFID_bikelock"
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
