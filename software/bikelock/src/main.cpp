@@ -57,9 +57,7 @@ void processCommand(String cmd) {
   
     storedPassword = cmd.substring(4); // Extract password after "SET "
 
-    isLocked = true;
-    digitalWrite(RED_PIN, HIGH);
-    digitalWrite(GREEN_PIN, LOW);
+    updateLockState(true); // Engage lock immediately after setting password
 
     statusChar->setValue("LOCKED");
     statusChar->notify();
@@ -72,10 +70,7 @@ void processCommand(String cmd) {
     String attempt = cmd.substring(7); // Extract password after "UNLOCK "
 
     if (attempt == storedPassword) {
-      isLocked = false;
-      
-      digitalWrite(RED_PIN, LOW);
-      digitalWrite(GREEN_PIN, HIGH);
+      updateLockState(false); // Disengage lock
 
       statusChar->setValue("UNLOCKED");
       statusChar->notify();
@@ -91,9 +86,7 @@ void processCommand(String cmd) {
   
   else if(cmd.startsWith("LOCK")) {
 
-      isLocked = true;
-      digitalWrite(RED_PIN, HIGH);
-      digitalWrite(GREEN_PIN, LOW);
+      updateLockState(true); // Engage lock
 
       statusChar->setValue("LOCKED");
       statusChar->notify();
@@ -108,6 +101,36 @@ void processCommand(String cmd) {
 
       statusChar->notify();
   }
+}
+
+/** LOCK STATE UPDATE FUNCTION ******************/
+void updateLockState(bool locked) {
+
+  isLocked = locked;
+
+  if (isLocked) {
+    digitalWrite(RED_PIN, HIGH);
+    digitalWrite(GREEN_PIN, LOW);
+
+    if (statusChar) {
+      statusChar->setValue("LOCKED");
+      statusChar->notify();
+    }
+
+    Serial.println("Lock engaged.");
+  } else {
+    digitalWrite(RED_PIN, LOW);
+    digitalWrite(GREEN_PIN, HIGH);
+
+    if (statusChar) {
+      statusChar->setValue("UNLOCKED");
+      statusChar->notify();
+    }
+
+    Serial.println("Lock disengaged.");
+  }
+
+  statusChar->notify();
 }
 
 /** BLE SERVER EVENTS *************************/
@@ -150,63 +173,70 @@ class CommandCallbacks : public BLECharacteristicCallbacks {
 /** SETUP FUNCTION *********************/
 void setup() {
 
-    Serial.begin(115200);
-    delay(2000);
-    Serial.println("Bike Lock BLE Server setup init...");
+  Serial.begin(115200);
+  delay(2000);
+  Serial.println("Bike Lock BLE Server setup init...");
 
-    // LED setup
-    pinMode(RED_PIN, OUTPUT);
-    pinMode(GREEN_PIN, OUTPUT);
-    digitalWrite(RED_PIN, LOW);
-    digitalWrite(GREEN_PIN, LOW);
-    pixel.begin();
-    pixel.clear();
-    pixel.show();
+  // LED setup
+  pinMode(RED_PIN, OUTPUT);
+  pinMode(GREEN_PIN, OUTPUT);
+  digitalWrite(RED_PIN, LOW);
+  digitalWrite(GREEN_PIN, LOW);
+  pixel.begin();
+  pixel.clear();
+  pixel.show();
 
-    // BLE setup
-    BLEDevice::init(DEVICE_NAME);
+  // BLE setup
+  BLEDevice::init(DEVICE_NAME);
 
-    // Create Server
-    BLEServer *pServer = BLEDevice::createServer();
-    pServer->setCallbacks(new MyServerCallbacks());
 
-    // Services
-    BLEService *pService = pServer->createService(BIKELOCK_SERVICE_UUID);
+  // Create Server
+  BLEServer *pServer = BLEDevice::createServer();
+  pServer->setCallbacks(new MyServerCallbacks());
+
+  // Services
+  BLEService *pService = pServer->createService(BIKELOCK_SERVICE_UUID);
     
-    // Command Characteristic
-    BLECharacteristic *commandChar = 
-      pService->createCharacteristic(COMMAND_CHAR_UUID, BLECharacteristic::PROPERTY_WRITE);
+  // Command Characteristic
+  BLECharacteristic *commandChar = 
+    pService->createCharacteristic(COMMAND_CHAR_UUID, BLECharacteristic::PROPERTY_WRITE);
     
-    commandChar->setCallbacks(new CommandCallbacks());
+  commandChar->setCallbacks(new CommandCallbacks());
 
-    // Status Characteristic
-    statusChar =
-      pService->createCharacteristic(
-        STATUS_CHAR_UUID,
-        BLECharacteristic::PROPERTY_READ |
-        BLECharacteristic::PROPERTY_NOTIFY
-      );
+  // Status Characteristic
+  statusChar =
+    pService->createCharacteristic(
+      STATUS_CHAR_UUID,
+      BLECharacteristic::PROPERTY_READ |
+      BLECharacteristic::PROPERTY_NOTIFY
+    );
     
-    BLE2901 *statusDesc = new BLE2901();
-    statusDesc->setDescription("Current Lock Status: [Locked] or [Unlocked]");
-    statusChar->addDescriptor(statusDesc);
+  BLE2901 *statusDesc = new BLE2901();
+  statusDesc->setDescription("Current Lock Status: [Locked] or [Unlocked]");
+  statusChar->addDescriptor(statusDesc);
 
-    // Start Service
-    pService->start();
 
-    // Advertising
-    BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
-    pAdvertising->addServiceUUID(BIKELOCK_SERVICE_UUID);
-    pAdvertising->setScanResponse(true);
+  BLE2901 *commandDesc = new BLE2901();
+  commandDesc->setDescription("Send commands: SET [password], UNLOCK [password], LOCK, STATUS");
+  commandChar->addDescriptor(commandDesc);
 
-    BLEAdvertisementData adData;
-    adData.setName(DEVICE_NAME);
+  // Start Service
+  pService->start();
+
+  updateLockState(false); // Start with lock disengaged
+
+  // Advertising
+  BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
+  pAdvertising->addServiceUUID(BIKELOCK_SERVICE_UUID);
+  pAdvertising->setScanResponse(true);
+
+  BLEAdvertisementData adData;
+  adData.setName(DEVICE_NAME);
     
+  pAdvertising->setAdvertisementData(adData);
 
-    pAdvertising->setAdvertisementData(adData);
-
-    BLEDevice::startAdvertising();
-    Serial.println("BLE Advertising started");
+  BLEDevice::startAdvertising();
+  Serial.println("BLE Advertising started");
 }
 
 void loop() {
