@@ -5,10 +5,10 @@
  * It allows clients to set a password, lock/unlock the bike, and check the lock status via BLE commands.
  * 
  * Commands sent from phone (lightblue app):
- * - Set Password: {"cmd":"set_pass","pass":"your_password"}
- * - Unlock: {"cmd":"unlock","pass":"attempted_password"}
- * - Lock: {"cmd":"lock"}
- * - Status: {"cmd":"status"}
+ * - Set Password: SET [password]
+ * - Unlock: UNLOCK [attempted password]
+ * - Lock: LOCK
+ * - Status: STATUS
  * 
  * LED Indicators:
  * - Red LED ON: Bike is locked
@@ -47,14 +47,15 @@ Adafruit_NeoPixel pixel(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 // Function to process incoming commands
 void processCommand(String cmd) {
-  Serial.print("Command Received: ");
+  cmd.trim();
+  cmd.toUpperCase();
+
+  Serial.print("Parsed Command: ");
   Serial.println(cmd);
 
-  if (cmd.startsWith("{\"cmd\":\"set_pass\"")) {
-    int passStart = cmd.indexOf("\"pass\":\"") + 8;
-    int passEnd = cmd.indexOf("\"", passStart);
-
-    storedPassword = cmd.substring(passStart, passEnd);
+  if (cmd.startsWith("SET ")) {
+  
+    storedPassword = cmd.substring(4); // Extract password after "SET "
 
     isLocked = true;
     digitalWrite(RED_PIN, HIGH);
@@ -66,12 +67,9 @@ void processCommand(String cmd) {
     Serial.println("Password set and lock engaged.");
   }
 
-  else if (cmd.startsWith("{\"cmd\":\"unlock\"")) {
+  else if (cmd.startsWith("UNLOCK ")) {
 
-    int passStart = cmd.indexOf("\"pass\":\"") + 8;
-    int passEnd = cmd.indexOf("\"", passStart);
-
-    String attempt = cmd.substring(passStart, passEnd);
+    String attempt = cmd.substring(7); // Extract password after "UNLOCK "
 
     if (attempt == storedPassword) {
       isLocked = false;
@@ -91,7 +89,7 @@ void processCommand(String cmd) {
     }
   }
   
-  else if(cmd.startsWith("{\"cmd\":\"lock\"")) {
+  else if(cmd.startsWith("LOCK")) {
 
       isLocked = true;
       digitalWrite(RED_PIN, HIGH);
@@ -101,7 +99,7 @@ void processCommand(String cmd) {
       statusChar->notify();
   }
 
-  else if(cmd.startsWith("{\"cmd\":\"status\"")) {
+  else if(cmd.startsWith("STATUS")) {
 
       if(isLocked)
           statusChar->setValue("LOCKED");
@@ -138,7 +136,13 @@ class CommandCallbacks : public BLECharacteristicCallbacks {
   void onWrite(BLECharacteristic *pChar) {
 
     String cmd = String(pChar->getValue().c_str());
+    cmd.trim();
+
     if (cmd.length() == 0) return; // Ignore empty writes
+
+    Serial.print("Received Raw Command: ");
+    Serial.println(cmd);
+    
     processCommand(cmd);
   }
 };
@@ -147,7 +151,7 @@ class CommandCallbacks : public BLECharacteristicCallbacks {
 void setup() {
 
     Serial.begin(115200);
-    delay(1000);
+    delay(2000);
     Serial.println("Bike Lock BLE Server setup init...");
 
     // LED setup
