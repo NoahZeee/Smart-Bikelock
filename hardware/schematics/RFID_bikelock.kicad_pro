@@ -418,16 +418,12 @@
       "microcontroller"
     ],
     [
-      "f7083b0f-48fd-4c7d-b050-7171e050a775",
-      "RFID_sensor"
-    ],
-    [
       "a061662f-ab83-4e0b-ae17-4060e18ae3e9",
       "power_supply"
     ],
     [
       "6af81104-f699-40fe-9eda-91b5cc8cec2f",
-      "Servo Assembly"
+      "Lock Assembly"
     ]
   ],
   "text_variables": {}

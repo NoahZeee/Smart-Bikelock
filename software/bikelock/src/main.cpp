@@ -22,28 +22,18 @@
 #include <Arduino.h>
 #include <BLEDevice.h>
 #include <BLE2901.h>
-#include <Adafruit_NeoPixel.h>
+#include <config.h>
+//#include <Adafruit_NeoPixel.h>
 
-/** DEVICE INFO ************************/
-#define DEVICE_NAME "Bike Lock"
-
-/** PIN DEFINITIONS ************************/
-#define LED_PIN 38
-#define RED_PIN 5
-#define GREEN_PIN 6
-#define NUM_LEDS 1
-
-/** BLE UUIDs ******************************/
-#define BIKELOCK_SERVICE_UUID "1ea28c9d-23ce-4f5b-9290-8b72317b97c3"
-#define COMMAND_CHAR_UUID "5a87b3d0-7c7d-4c5b-bf2c-5e7a0f1a0a01"
-#define STATUS_CHAR_UUID  "5a87b3d0-7c7d-4c5b-bf2c-5e7a0f1a0a02"
 
 /** GLOBAL VARIABLES ************************/
 String storedPassword = "";
 bool isLocked = false;
 BLECharacteristic *statusChar;
 
-Adafruit_NeoPixel pixel(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);
+// Adafruit_NeoPixel pixel(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);
+
+void updateLockState(bool locked);
 
 // Function to process incoming commands
 void processCommand(String cmd) {
@@ -137,16 +127,18 @@ void updateLockState(bool locked) {
 class MyServerCallbacks : public BLEServerCallbacks {
 
   void onConnect(BLEServer *pServer) {
-    pixel.setPixelColor(0, pixel.Color(0, 255, 0)); // Green
-    pixel.show();
-    
+    // pixel.setPixelColor(0, pixel.Color(0, 255, 0)); // Green
+    // pixel.show();
+    digitalWrite(LED_PIN, HIGH);
+
     Serial.println("Client connected");
   }
 
   void onDisconnect(BLEServer *pServer) {
-    pixel.setPixelColor(0, pixel.Color(0, 0, 0)); // Off
-    pixel.show();
-    
+    // pixel.setPixelColor(0, pixel.Color(0, 0, 0)); // Off
+    // pixel.show();
+    digitalWrite(LED_PIN, LOW);
+
     Serial.println("Client disconnected");
     
     BLEDevice::startAdvertising(); // Restart advertising so new clients can connect
@@ -180,11 +172,13 @@ void setup() {
   // LED setup
   pinMode(RED_PIN, OUTPUT);
   pinMode(GREEN_PIN, OUTPUT);
+  pinMode(LED_PIN, OUTPUT);
   digitalWrite(RED_PIN, LOW);
   digitalWrite(GREEN_PIN, LOW);
-  pixel.begin();
-  pixel.clear();
-  pixel.show();
+  digitalWrite(LED_PIN, LOW);
+  // pixel.begin();
+  // pixel.clear();
+  // pixel.show();
 
   // BLE setup
   BLEDevice::init(DEVICE_NAME);
