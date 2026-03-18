@@ -39,6 +39,46 @@
 				(justify left top)
 			)
 		)
+		(pin "CTRL1" input
+			(at 208.28 73.66 180)
+			(uuid "c03f19fb-b72b-488d-a5b9-70dfb90cacc5")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CTRL2" input
+			(at 208.28 76.2 180)
+			(uuid "cba51b0c-d8b0-478c-b53a-14ece4d0bda8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CTRL3" input
+			(at 208.28 78.74 180)
+			(uuid "ba9a1d87-7355-4190-aa35-96ae79fc5d8e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CTRL4" input
+			(at 208.28 81.28 180)
+			(uuid "4aafc2af-43e5-4b64-b1b3-11a2ea107441")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(instances
 			(project "RFID_bikelock"
 				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
@@ -48,7 +88,7 @@
 		)
 	)
 	(sheet
-		(at 46.99 119.38)
+		(at 52.07 52.07)
 		(size 44.45 43.18)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -64,7 +104,7 @@
 		)
 		(uuid "a061662f-ab83-4e0b-ae17-4060e18ae3e9")
 		(property "Sheetname" "power_supply"
-			(at 46.99 118.6684 0)
+			(at 52.07 51.3584 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -73,7 +113,7 @@
 			)
 		)
 		(property "Sheetfile" "power_supply.kicad_sch"
-			(at 46.99 163.1446 0)
+			(at 52.07 95.8346 0)
 			(effects
 				(font
 					(size 1.27 1.27)
