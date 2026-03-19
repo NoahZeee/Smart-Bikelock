@@ -1,5 +1,5 @@
 # Project Name
-Smart-Bikelocl
+Smart-Bikelock
 
 ## Description
 This project includes the design for a bike locking mechanism that can be unlocked using your phone through the BLE feature of esp32
