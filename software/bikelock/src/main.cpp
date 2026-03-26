@@ -23,6 +23,8 @@
 #include <BLEDevice.h>
 #include <BLE2901.h>
 #include <config.h>
+#include <SPIFFS.h>
+#include <esp_sleep.h>
 //#include <Adafruit_NeoPixel.h>
 
 
@@ -30,10 +32,51 @@
 String storedPassword = "";
 bool isLocked = false;
 BLECharacteristic *statusChar;
+unsigned long lastActivityTime = 0;
+bool deviceConnected = false;
 
 // Adafruit_NeoPixel pixel(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 void updateLockState(bool locked);
+
+/** FLASH STORAGE FUNCTIONS *****/
+void savePasswordToFlash(String password) {
+  File file = SPIFFS.open("/password.txt", FILE_WRITE);
+  if (!file) {
+    Serial.println("Failed to open password file for writing");
+    return;
+  }
+  file.print(password);
+  file.close();
+  Serial.println("Password saved to flash");
+}
+
+String loadPasswordFromFlash() {
+  if (!SPIFFS.exists("/password.txt")) {
+    Serial.println("Password file does not exist");
+    return "";
+  }
+  
+  File file = SPIFFS.open("/password.txt", FILE_READ);
+  if (!file) {
+    Serial.println("Failed to open password file for reading");
+    return "";
+  }
+  
+  String password = file.readString();
+  file.close();
+  Serial.print("Password loaded from flash: ");
+  Serial.println(password);
+  return password;
+}
+
+void deletePasswordFromFlash() {
+  if (SPIFFS.remove("/password.txt")) {
+    Serial.println("Password deleted from flash");
+  } else {
+    Serial.println("Failed to delete password file");
+  }
+}
 
 // Function to process incoming commands
 void processCommand(String cmd) {
@@ -43,9 +86,10 @@ void processCommand(String cmd) {
   Serial.print("Parsed Command: ");
   Serial.println(cmd);
 
-  if (cmd.startsWith("SET ")) {
+  if(cmd.startsWith("SET ")) {
   
     storedPassword = cmd.substring(4); // Extract password after "SET "
+    savePasswordToFlash(storedPassword); // Save to flash
 
     updateLockState(true); // Engage lock immediately after setting password
 
@@ -91,6 +135,18 @@ void processCommand(String cmd) {
 
       statusChar->notify();
   }
+
+  else if(cmd.startsWith("RESET")) {
+      deletePasswordFromFlash();
+      storedPassword = "";
+      updateLockState(true); // Lock after reset
+      statusChar->setValue("RESET");
+      statusChar->notify();
+      Serial.println("Password reset. Device must be configured again.");
+  }
+
+  // Update last activity time
+  lastActivityTime = millis();
 }
 
 /** LOCK STATE UPDATE FUNCTION ******************/
@@ -130,6 +186,8 @@ class MyServerCallbacks : public BLEServerCallbacks {
     // pixel.setPixelColor(0, pixel.Color(0, 255, 0)); // Green
     // pixel.show();
     digitalWrite(LED_PIN, HIGH);
+    deviceConnected = true;
+    lastActivityTime = millis();
 
     Serial.println("Client connected");
   }
@@ -138,6 +196,8 @@ class MyServerCallbacks : public BLEServerCallbacks {
     // pixel.setPixelColor(0, pixel.Color(0, 0, 0)); // Off
     // pixel.show();
     digitalWrite(LED_PIN, LOW);
+    deviceConnected = false;
+    lastActivityTime = millis();
 
     Serial.println("Client disconnected");
     
@@ -158,6 +218,7 @@ class CommandCallbacks : public BLECharacteristicCallbacks {
     Serial.print("Received Raw Command: ");
     Serial.println(cmd);
     
+    lastActivityTime = millis();
     processCommand(cmd);
   }
 };
@@ -168,6 +229,16 @@ void setup() {
   Serial.begin(115200);
   delay(2000);
   Serial.println("Bike Lock BLE Server setup init...");
+
+  // SPIFFS setup
+  if (!SPIFFS.begin(true)) {
+    Serial.println("SPIFFS Mount Failed");
+    return;
+  }
+  Serial.println("SPIFFS mounted successfully");
+
+  // Load password from flash
+  storedPassword = loadPasswordFromFlash();
 
   // LED setup
   pinMode(RED_PIN, OUTPUT);
@@ -231,8 +302,26 @@ void setup() {
 
   BLEDevice::startAdvertising();
   Serial.println("BLE Advertising started");
+
+  // Configure GPIO pins for deep sleep wakeup
+  // GPIO12 (low side of EXT0)
+  esp_sleep_enable_ext0_wakeup((gpio_num_t)TOUCH_WAKE_PIN_1, 1); // GPIO12, high level
+  // GPIO13 (part of EXT1 bitmap)
+  esp_sleep_enable_ext1_wakeup((1ULL << TOUCH_WAKE_PIN_2), ESP_EXT1_WAKEUP_ANY_HIGH); // GPIO13
+
+  lastActivityTime = millis();
 }
 
 void loop() {
- 
+  // Check for inactivity timeout and enter deep sleep if needed
+  if (deviceConnected == false && (millis() - lastActivityTime) > INACTIVITY_TIMEOUT_MS) {
+    Serial.println("Inactivity timeout reached. Entering deep sleep...");
+    Serial.println("To wake up, press the touch button on GPIO12 or GPIO13");
+    delay(100); // Allow serial to flush
+
+    // Enter deep sleep
+    esp_deep_sleep_start();
+  }
+
+  delay(1000); // Check every second
 }
