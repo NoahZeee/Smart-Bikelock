@@ -22,18 +22,23 @@
 #include <Arduino.h>
 #include <BLEDevice.h>
 #include <BLE2901.h>
+#include <BLE2902.h>
 #include <config.h>
 #include <SPIFFS.h>
 #include <esp_sleep.h>
+#include <Stepper.h>
 //#include <Adafruit_NeoPixel.h>
 
 
 /** GLOBAL VARIABLES ************************/
 String storedPassword = "";
 bool isLocked = false;
+
 BLECharacteristic *statusChar;
 unsigned long lastActivityTime = 0;
 bool deviceConnected = false;
+
+Stepper stepper(STEPS_PER_REV, STEPPER_PIN_1, STEPPER_PIN_2, STEPPER_PIN_3, STEPPER_PIN_4);
 
 // Adafruit_NeoPixel pixel(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);
 
@@ -44,11 +49,13 @@ void savePasswordToFlash(String password) {
   File file = SPIFFS.open("/password.txt", FILE_WRITE);
   if (!file) {
     Serial.println("Failed to open password file for writing");
+    Serial.flush();
     return;
   }
   file.print(password);
   file.close();
   Serial.println("Password saved to flash");
+  Serial.flush();
 }
 
 String loadPasswordFromFlash() {
@@ -85,6 +92,7 @@ void processCommand(String cmd) {
 
   Serial.print("Parsed Command: ");
   Serial.println(cmd);
+  Serial.flush();
 
   if(cmd.startsWith("SET ")) {
   
@@ -97,6 +105,7 @@ void processCommand(String cmd) {
     statusChar->notify();
 
     Serial.println("Password set and lock engaged.");
+    Serial.flush();
   }
 
   else if (cmd.startsWith("UNLOCK ")) {
@@ -110,11 +119,13 @@ void processCommand(String cmd) {
       statusChar->notify();
 
       Serial.println("Correct password. Lock disengaged.");
+      Serial.flush();
     } else {
       statusChar->setValue("WRONG_PASS");
       statusChar->notify();
 
       Serial.println("Incorrect password attempt.");
+      Serial.flush();
     }
   }
   
@@ -143,6 +154,7 @@ void processCommand(String cmd) {
       statusChar->setValue("RESET");
       statusChar->notify();
       Serial.println("Password reset. Device must be configured again.");
+      Serial.flush();
   }
 
   // Update last activity time
@@ -154,29 +166,34 @@ void updateLockState(bool locked) {
 
   isLocked = locked;
 
-  if (isLocked) {
+  if (isLocked) { // engage lock
     digitalWrite(RED_PIN, HIGH);
     digitalWrite(GREEN_PIN, LOW);
 
     if (statusChar) {
       statusChar->setValue("LOCKED");
-      statusChar->notify();
     }
 
     Serial.println("Lock engaged.");
-  } else {
+    Serial.flush();
+    // stepper.step(STEPS_PER_REV); // Rotate stepper motor 2048 steps (1 revolution)
+  } else { // disengage lock
     digitalWrite(RED_PIN, LOW);
     digitalWrite(GREEN_PIN, HIGH);
 
     if (statusChar) {
       statusChar->setValue("UNLOCKED");
-      statusChar->notify();
     }
 
     Serial.println("Lock disengaged.");
+    Serial.flush();
+    // stepper.step(-STEPS_PER_REV); // Rotate stepper motor -2048 steps (1 revolution in opposite direction)
   }
 
-  statusChar->notify();
+  // Send notification once at the end
+  if (statusChar) {
+    statusChar->notify();
+  }
 }
 
 /** BLE SERVER EVENTS *************************/
@@ -217,6 +234,7 @@ class CommandCallbacks : public BLECharacteristicCallbacks {
 
     Serial.print("Received Raw Command: ");
     Serial.println(cmd);
+    Serial.flush();
     
     lastActivityTime = millis();
     processCommand(cmd);
@@ -251,22 +269,27 @@ void setup() {
   // pixel.clear();
   // pixel.show();
 
+  stepper.setSpeed(10); // Set stepper speed
+
   // BLE setup
   BLEDevice::init(DEVICE_NAME);
-
+  Serial.println("BLE Device initialized");
 
   // Create Server
   BLEServer *pServer = BLEDevice::createServer();
   pServer->setCallbacks(new MyServerCallbacks());
+  Serial.println("BLE Server created");
 
   // Services
   BLEService *pService = pServer->createService(BIKELOCK_SERVICE_UUID);
+  Serial.println("BLE Service created");
     
   // Command Characteristic
   BLECharacteristic *commandChar = 
     pService->createCharacteristic(COMMAND_CHAR_UUID, BLECharacteristic::PROPERTY_WRITE);
     
   commandChar->setCallbacks(new CommandCallbacks());
+  Serial.println("Command characteristic created");
 
   // Status Characteristic
   statusChar =
@@ -275,11 +298,17 @@ void setup() {
       BLECharacteristic::PROPERTY_READ |
       BLECharacteristic::PROPERTY_NOTIFY
     );
+  
+  // Set initial value for status characteristic
+  statusChar->setValue("UNLOCKED");
     
   BLE2901 *statusDesc = new BLE2901();
   statusDesc->setDescription("Current Lock Status: [Locked] or [Unlocked]");
   statusChar->addDescriptor(statusDesc);
 
+  // Add CCCD descriptor to enable notifications
+  BLE2902 *statusCCCD = new BLE2902();
+  statusChar->addDescriptor(statusCCCD);
 
   BLE2901 *commandDesc = new BLE2901();
   commandDesc->setDescription("Send commands: SET [password], UNLOCK [password], LOCK, STATUS");
@@ -287,6 +316,7 @@ void setup() {
 
   // Start Service
   pService->start();
+  Serial.println("BLE Service started");
 
   updateLockState(false); // Start with lock disengaged
 
@@ -302,6 +332,8 @@ void setup() {
 
   BLEDevice::startAdvertising();
   Serial.println("BLE Advertising started");
+  Serial.print("Service UUID: ");
+  Serial.println(BIKELOCK_SERVICE_UUID);
 
   // Configure GPIO pins for deep sleep wakeup
   // GPIO12 (low side of EXT0)

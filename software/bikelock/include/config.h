@@ -3,11 +3,18 @@
 /** DEVICE INFO ************************/
 #define DEVICE_NAME "Bike Lock"
 
-/** PIN DEFINITIONS ************************/
+/** LED PIN DEFINITIONS ************************/
 #define LED_PIN 2
 #define RED_PIN 25
 #define GREEN_PIN 26
 #define NUM_LEDS 1
+
+/** STEPPER MOTOR PINS ************************/
+#define STEPPER_PIN_1 14
+#define STEPPER_PIN_2 16
+#define STEPPER_PIN_3 15
+#define STEPPER_PIN_4 17
+#define STEPS_PER_REV 2048
 
 /** TOUCH WAKE PINS (for deep sleep) *****/
 #define TOUCH_WAKE_PIN_1 12
