@@ -222,8 +222,15 @@ body {
 }
 
 .btn:disabled {
-    opacity: 0.5;
+    opacity: 0.6;
     cursor: not-allowed;
+    background-color: #D3D3D3 !important;
+    color: #888 !important;
+    border-color: #999 !important;
+}
+
+.btn:disabled:hover {
+    background-color: #D3D3D3 !important;
 }
 
 /* Controls Section */

@@ -18,6 +18,7 @@ let bleService = null;
 let commandChar = null;
 let statusChar = null;
 let isConnected = false;
+let lockState = null; // Track current lock state (true=locked, false=unlocked)
 
 // UI Elements
 const connectBtn = document.getElementById('connectBtn');
@@ -70,7 +71,7 @@ function updateConnectionStatus(connected) {
     if (connected) {
         statusCard.classList.remove('disconnected');
         statusCard.classList.add('connected');
-        statusIcon.textContent = '✅';
+        statusIcon.textContent = '◉';  // Connected indicator
         statusMessage.textContent = 'Connected';
         controlsSection.style.display = 'flex';
         connectBtn.style.display = 'none';
@@ -141,6 +142,27 @@ async function connectToDevice() {
         statusChar.addEventListener('characteristicvaluechanged', onStatusUpdate);
         addMessage('Enabled status notifications', 'success');
 
+        // Read initial status to update UI immediately
+        let initialStatus = await statusChar.readValue();
+        let initialDecodedStatus = new TextDecoder().decode(initialStatus).replace(/\0/g, '').trim().toUpperCase();
+        console.log('Initial read from device:', initialDecodedStatus);
+        
+        // If we got INITIALIZING, wait a moment and try again
+        if (initialDecodedStatus === 'INITIALIZING') {
+            addMessage('Device is initializing, waiting...', 'info');
+            await new Promise(resolve => setTimeout(resolve, 500));
+            initialStatus = await statusChar.readValue();
+            initialDecodedStatus = new TextDecoder().decode(initialStatus).replace(/\0/g, '').trim().toUpperCase();
+            console.log('Second read after init wait:', initialDecodedStatus);
+        }
+        
+        // Manually trigger status update with the initial read
+        onStatusUpdate({ target: { value: initialStatus } });
+        
+        // Request fresh status from device to ensure we're in sync
+        addMessage('Requesting fresh status from device...', 'info');
+        await sendCommand('STATUS');
+
         // Update UI
         updateConnectionStatus(true);
         connectBtn.disabled = false;
@@ -179,32 +201,136 @@ function onDisconnected() {
  */
 function onStatusUpdate(event) {
     const value = event.target.value;
-    const status = new TextDecoder().decode(value);
     
-    addMessage(`Status: ${status}`, 'info');
+    // Safely decode the BLE value, removing any null bytes or artifacts
+    let decodedStatus = new TextDecoder().decode(value);
+    
+    // Remove null bytes and non-printable characters
+    decodedStatus = decodedStatus.replace(/\0/g, '').trim();
+    
+    // Remove any non-ASCII characters that might interfere
+    decodedStatus = decodedStatus.replace(/[^\x20-\x7E]/g, '').trim();
+    
+    const status = decodedStatus.toUpperCase();
+    
+    if (!status) {
+        addMessage('WARNING: Received empty status from device', 'error');
+        console.log('Raw BLE value:', value);
+        return;
+    }
+    
+    console.log('Raw BLE value bytes:', Array.from(new Uint8Array(value.buffer)).map(b => '0x' + b.toString(16).padStart(2, '0')).join(' '));
+    addMessage(`Device Status: ${status}`, 'info');
     updateLockDisplay(status);
 }
 
 /**
- * Update the lock display based on status
+ * Update the lock display based on status (CLEAN STATE MACHINE)
+ * All status messages must update lockState to prevent deadlocks
  */
 function updateLockDisplay(status) {
-    if (status.includes('LOCKED')) {
+    // Normalize status to handle any whitespace or case issues
+    status = status.trim().toUpperCase();
+    
+    console.log('updateLockDisplay called with status:', status, 'current lockState:', lockState);
+    
+    // Determine lock state from status message
+    let newLockState = null;
+    let displayText = '';
+    
+    if (status.includes('LOCKED') && !status.includes('UNLOCKED')) {
+        // Make sure it says LOCKED but not UNLOCKED (to avoid matching UNLOCKED as LOCKED)
+        newLockState = true;
+        displayText = 'LOCKED';
+    } else if (status.includes('UNLOCKED')) {
+        newLockState = false;
+        displayText = 'UNLOCKED';
+    } else if (status.includes('RESET')) {
+        newLockState = false;  // Device always unlocked after reset
+        displayText = 'RESET - Ready to Configure';
+    } else if (status.includes('INITIALIZING')) {
+        // Device just started - don't update state, just show message
+        addMessage('Device initializing...', 'info');
+        console.log('Ignoring INITIALIZING status, keeping current lockState:', lockState);
+        return;
+    } else if (status.includes('WRONG_PASS')) {
+        // Wrong password attempted - maintain current lock state, just show error
+        addMessage('Incorrect password!', 'error');
+        lockStatusText.textContent = 'Wrong Password - Try Again';
+        console.log('WRONG_PASS received, maintaining lockState:', lockState);
+        // DON'T change lockState here - keep current state
+        // But still update button states in case something got out of sync
+        updateButtonStates();
+        return;  // Exit early, don't update display styling
+    } else if (status.includes('LOCKED_CANNOT_SET')) {
+        newLockState = true;  // Device is locked
+        displayText = 'LOCKED';
+        addMessage('Cannot set password while locked. Unlock first!', 'error');
+    } else if (status.includes('ERROR_NO_PASSWORD')) {
+        // Cannot lock without password - maintain current state
+        addMessage('Cannot lock device without a password. Use SET password first!', 'error');
+        lockStatusText.textContent = 'Password Required';
+        console.log('ERROR_NO_PASSWORD received, maintaining lockState:', lockState);
+        // Don't change lockState, just show error and update buttons
+        updateButtonStates();
+        return;  // Exit early
+    } else {
+        // Unknown status - don't change state, try to query device
+        addMessage(`Unknown status received: "${status}" - Requesting device status...`, 'error');
+        console.log('Unknown status, requesting status from device');
+        // Attempt to query status to get back in sync
+        checkStatus();
+        return;
+    }
+    
+    // Update lock state (this is CRITICAL for all paths to prevent deadlock)
+    if (newLockState !== null) {
+        console.log(`State change: ${lockState} -> ${newLockState}`);
+        lockState = newLockState;
+    }
+    
+    // Update UI display based on lock state
+    if (lockState === true) {
+        // LOCKED
         lockDisplay.classList.add('locked');
         lockDisplay.classList.remove('unlocked');
-        lockIndicator.textContent = '🔒';
-        lockStatusText.textContent = 'Locked';
-    } else if (status.includes('UNLOCKED')) {
+        lockIndicator.textContent = '⬤';
+        lockStatusText.textContent = displayText || 'LOCKED';
+        console.log('UI updated to LOCKED state');
+    } else if (lockState === false) {
+        // UNLOCKED
         lockDisplay.classList.remove('locked');
         lockDisplay.classList.add('unlocked');
-        lockIndicator.textContent = '🔓';
-        lockStatusText.textContent = 'Unlocked';
-    } else if (status.includes('WRONG_PASS')) {
-        addMessage('Wrong password!', 'error');
-        lockStatusText.textContent = 'Wrong Password';
-    } else if (status.includes('RESET')) {
-        addMessage('Device has been reset', 'warning');
-        lockStatusText.textContent = 'Reset';
+        lockIndicator.textContent = '○';
+        lockStatusText.textContent = displayText || 'UNLOCKED';
+        console.log('UI updated to UNLOCKED state');
+    } else {
+        console.log('ERROR: lockState is null after status update!');
+    }
+    
+    // Update button states based on new lock state
+    updateButtonStates();
+}
+
+/**
+ * Update button states based on current lock state
+ */
+function updateButtonStates() {
+    if (lockState === null) {
+        // Not yet determined
+        setPasswordBtn.disabled = true;
+        lockBtn.disabled = true;
+        unlockBtn.disabled = true;
+    } else if (lockState === true) {
+        // Device is LOCKED
+        setPasswordBtn.disabled = true;  // Cannot set password while locked
+        lockBtn.disabled = true;          // Already locked, disable to prevent double-locking
+        unlockBtn.disabled = false;       // Can unlock
+    } else {
+        // Device is UNLOCKED
+        setPasswordBtn.disabled = false;  // Can set password while unlocked
+        lockBtn.disabled = false;         // Can lock
+        unlockBtn.disabled = true;        // Already unlocked, disable to prevent double-unlocking
     }
 }
 
@@ -244,9 +370,8 @@ async function setPassword() {
     }
 
     const command = `SET ${password}`;
-    if (await sendCommand(command)) {
-        addMessage('Password set successfully', 'success');
-    }
+    await sendCommand(command);
+    // Don't show success message here - let the status update from device confirm it
 }
 
 /**

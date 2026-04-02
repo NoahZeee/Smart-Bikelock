@@ -85,6 +85,41 @@ void deletePasswordFromFlash() {
   }
 }
 
+void saveLockStateToFlash(bool locked) {
+  File file = SPIFFS.open("/lock_state.txt", FILE_WRITE);
+  if (!file) {
+    Serial.println("Failed to open lock state file for writing");
+    Serial.flush();
+    return;
+  }
+  file.print(locked ? "1" : "0");
+  file.close();
+  Serial.print("Lock state saved to flash: ");
+  Serial.println(locked ? "LOCKED" : "UNLOCKED");
+  Serial.flush();
+}
+
+bool loadLockStateFromFlash() {
+  if (!SPIFFS.exists("/lock_state.txt")) {
+    Serial.println("Lock state file does not exist, defaulting to UNLOCKED");
+    return false;
+  }
+  
+  File file = SPIFFS.open("/lock_state.txt", FILE_READ);
+  if (!file) {
+    Serial.println("Failed to open lock state file for reading");
+    return false;
+  }
+  
+  String state = file.readString();
+  file.close();
+  bool locked = (state == "1");
+  Serial.print("Lock state loaded from flash: ");
+  Serial.println(locked ? "LOCKED" : "UNLOCKED");
+  Serial.flush();
+  return locked;
+}
+
 // Function to process incoming commands
 void processCommand(String cmd) {
   cmd.trim();
@@ -96,16 +131,21 @@ void processCommand(String cmd) {
 
   if(cmd.startsWith("SET ")) {
   
-    storedPassword = cmd.substring(4); // Extract password after "SET "
-    savePasswordToFlash(storedPassword); // Save to flash
+    // Security: Only allow setting password when UNLOCKED
+    if (isLocked) {
+      statusChar->setValue("LOCKED_CANNOT_SET");
+      statusChar->notify();
+      Serial.println("ERROR: Cannot set password while locked. Unlock device first.");
+      Serial.flush();
+    } else {
+      storedPassword = cmd.substring(4); // Extract password after "SET "
+      savePasswordToFlash(storedPassword); // Save to flash
 
-    updateLockState(true); // Engage lock immediately after setting password
+      updateLockState(true); // Engage lock immediately after setting password (handles setValue + notify)
 
-    statusChar->setValue("LOCKED");
-    statusChar->notify();
-
-    Serial.println("Password set and lock engaged.");
-    Serial.flush();
+      Serial.println("Password set and lock engaged.");
+      Serial.flush();
+    }
   }
 
   else if (cmd.startsWith("UNLOCK ")) {
@@ -113,10 +153,7 @@ void processCommand(String cmd) {
     String attempt = cmd.substring(7); // Extract password after "UNLOCK "
 
     if (attempt == storedPassword) {
-      updateLockState(false); // Disengage lock
-
-      statusChar->setValue("UNLOCKED");
-      statusChar->notify();
+      updateLockState(false); // Disengage lock (handles setValue + notify)
 
       Serial.println("Correct password. Lock disengaged.");
       Serial.flush();
@@ -130,11 +167,15 @@ void processCommand(String cmd) {
   }
   
   else if(cmd.startsWith("LOCK")) {
-
-      updateLockState(true); // Engage lock
-
-      statusChar->setValue("LOCKED");
-      statusChar->notify();
+      // Security: Only allow locking if a password has been set
+      if (storedPassword.length() == 0) {
+        statusChar->setValue("ERROR_NO_PASSWORD");
+        statusChar->notify();
+        Serial.println("ERROR: Cannot lock device without a password set. Use SET [password] first.");
+        Serial.flush();
+      } else {
+        updateLockState(true); // Engage lock (handles setValue + notify)
+      }
   }
 
   else if(cmd.startsWith("STATUS")) {
@@ -150,10 +191,9 @@ void processCommand(String cmd) {
   else if(cmd.startsWith("RESET")) {
       deletePasswordFromFlash();
       storedPassword = "";
-      updateLockState(true); // Lock after reset
-      statusChar->setValue("RESET");
-      statusChar->notify();
-      Serial.println("Password reset. Device must be configured again.");
+      updateLockState(false); // Unlock after reset - this calls setValue("UNLOCKED") + notify()
+      // NOTE: Don't send RESET separately - updateLockState already notified with UNLOCKED
+      Serial.println("Password reset. Device unlocked and ready for reconfiguration.");
       Serial.flush();
   }
 
@@ -165,35 +205,38 @@ void processCommand(String cmd) {
 void updateLockState(bool locked) {
 
   isLocked = locked;
+  saveLockStateToFlash(locked); // Persist lock state
 
+  String statusValue = locked ? "LOCKED" : "UNLOCKED";
+  
   if (isLocked) { // engage lock
     digitalWrite(RED_PIN, HIGH);
     digitalWrite(GREEN_PIN, LOW);
-
-    if (statusChar) {
-      statusChar->setValue("LOCKED");
-    }
-
     Serial.println("Lock engaged.");
-    Serial.flush();
-    // stepper.step(STEPS_PER_REV); // Rotate stepper motor 2048 steps (1 revolution)
   } else { // disengage lock
     digitalWrite(RED_PIN, LOW);
     digitalWrite(GREEN_PIN, HIGH);
-
-    if (statusChar) {
-      statusChar->setValue("UNLOCKED");
-    }
-
     Serial.println("Lock disengaged.");
-    Serial.flush();
-    // stepper.step(-STEPS_PER_REV); // Rotate stepper motor -2048 steps (1 revolution in opposite direction)
   }
+  Serial.flush();
+  
+  // Update BLE characteristic value
+  if (statusChar) {
+    Serial.print("Setting BLE characteristic to: ");
+    Serial.println(statusValue);
+    statusChar->setValue(statusValue.c_str());
+    Serial.println("BLE characteristic value set successfully");
+  } else {
+    Serial.println("ERROR: statusChar is NULL!");
+  }
+  Serial.flush();
 
   // Send notification once at the end
   if (statusChar) {
     statusChar->notify();
+    Serial.println("BLE notification sent");
   }
+  Serial.flush();
 }
 
 /** BLE SERVER EVENTS *************************/
@@ -248,6 +291,16 @@ void setup() {
   delay(2000);
   Serial.println("Bike Lock BLE Server setup init...");
 
+  // Check if waking from deep sleep
+  esp_sleep_wakeup_cause_t wakeup_reason = esp_sleep_get_wakeup_cause();
+  if (wakeup_reason == ESP_SLEEP_WAKEUP_EXT0) {
+    Serial.println(">>> WOKE UP FROM DEEP SLEEP (External Pin)");
+  } else if (wakeup_reason != ESP_SLEEP_WAKEUP_UNDEFINED) {
+    Serial.print(">>> WOKE UP FROM DEEP SLEEP (Reason: ");
+    Serial.print((int)wakeup_reason);
+    Serial.println(")");
+  }
+
   // SPIFFS setup
   if (!SPIFFS.begin(true)) {
     Serial.println("SPIFFS Mount Failed");
@@ -257,6 +310,9 @@ void setup() {
 
   // Load password from flash
   storedPassword = loadPasswordFromFlash();
+
+  // Load lock state from flash (or default to unlocked if not set)
+  bool savedLockState = loadLockStateFromFlash();
 
   // LED setup
   pinMode(RED_PIN, OUTPUT);
@@ -299,8 +355,9 @@ void setup() {
       BLECharacteristic::PROPERTY_NOTIFY
     );
   
-  // Set initial value for status characteristic
-  statusChar->setValue("UNLOCKED");
+  // Set initial value for status characteristic (will be overridden by updateLockState in setup)
+  statusChar->setValue("INITIALIZING");
+  Serial.println("Status characteristic created with initial value: INITIALIZING");
     
   BLE2901 *statusDesc = new BLE2901();
   statusDesc->setDescription("Current Lock Status: [Locked] or [Unlocked]");
@@ -309,6 +366,7 @@ void setup() {
   // Add CCCD descriptor to enable notifications
   BLE2902 *statusCCCD = new BLE2902();
   statusChar->addDescriptor(statusCCCD);
+  Serial.println("BLE2902 CCCD descriptor added to status characteristic");
 
   BLE2901 *commandDesc = new BLE2901();
   commandDesc->setDescription("Send commands: SET [password], UNLOCK [password], LOCK, STATUS");
@@ -318,7 +376,8 @@ void setup() {
   pService->start();
   Serial.println("BLE Service started");
 
-  updateLockState(false); // Start with lock disengaged
+  // Set initial lock state (load from flash)
+  updateLockState(savedLockState);
 
   // Advertising
   BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();
@@ -336,10 +395,15 @@ void setup() {
   Serial.println(BIKELOCK_SERVICE_UUID);
 
   // Configure GPIO pins for deep sleep wakeup
-  // GPIO12 (low side of EXT0)
-  esp_sleep_enable_ext0_wakeup((gpio_num_t)TOUCH_WAKE_PIN_1, 1); // GPIO12, high level
-  // GPIO13 (part of EXT1 bitmap)
-  esp_sleep_enable_ext1_wakeup((1ULL << TOUCH_WAKE_PIN_2), ESP_EXT1_WAKEUP_ANY_HIGH); // GPIO13
+  // Set GPIO12 as input with pull-down
+  pinMode(TOUCH_WAKE_PIN_1, INPUT_PULLDOWN);
+  // Use EXT0 on GPIO12 - wakes on HIGH (button press pulls pin high)
+  esp_sleep_enable_ext0_wakeup((gpio_num_t)TOUCH_WAKE_PIN_1, 1);
+  
+  Serial.println("Deep sleep configured:");
+  Serial.print("  Wake pin: GPIO");
+  Serial.println(TOUCH_WAKE_PIN_1);
+  Serial.println("  Trigger: HIGH level (button press)");
 
   lastActivityTime = millis();
 }
@@ -347,9 +411,15 @@ void setup() {
 void loop() {
   // Check for inactivity timeout and enter deep sleep if needed
   if (deviceConnected == false && (millis() - lastActivityTime) > INACTIVITY_TIMEOUT_MS) {
-    Serial.println("Inactivity timeout reached. Entering deep sleep...");
-    Serial.println("To wake up, press the touch button on GPIO12 or GPIO13");
-    delay(100); // Allow serial to flush
+    Serial.println("\n========== ENTERING DEEP SLEEP ==========");
+    Serial.print("Last activity: ");
+    Serial.print(millis() - lastActivityTime);
+    Serial.println(" ms ago");
+    Serial.print("To wake up: Press button on GPIO");
+    Serial.println(TOUCH_WAKE_PIN_1);
+    Serial.println("========================================\n");
+    Serial.flush();
+    delay(200); // Allow serial to flush completely
 
     // Enter deep sleep
     esp_deep_sleep_start();
