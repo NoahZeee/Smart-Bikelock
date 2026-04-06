@@ -57,14 +57,10 @@ void setup() {
   bool savedLockState = loadLockStateFromFlash();
 
   // Configure GPIO pins
-  pinMode(RED_PIN, OUTPUT);
-  pinMode(GREEN_PIN, OUTPUT);
   pinMode(LED_PIN, OUTPUT);
-  digitalWrite(RED_PIN, LOW);
-  digitalWrite(GREEN_PIN, LOW);
   digitalWrite(LED_PIN, LOW);
 
-  stepper.setSpeed(10); // Set stepper motor speed
+  stepper.setSpeed(STEPPER_SPEED); // Set stepper motor speed (RPM)
 
   // Initialize BLE
   Serial.println("\n--- BLE Initialization ---");

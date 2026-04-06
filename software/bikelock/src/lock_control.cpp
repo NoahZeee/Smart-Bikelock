@@ -5,7 +5,7 @@
 
 /**
  * Lock Control Module Implementation
- * Centralized lock state management with LED feedback and BLE sync
+ * Stepper motor control with flash persistence and BLE sync
  */
 
 void updateLockState(bool locked) {
@@ -15,14 +15,20 @@ void updateLockState(bool locked) {
 
   String statusValue = locked ? "LOCKED" : "UNLOCKED";
   
-  if (isLocked) { // engage lock
-    digitalWrite(RED_PIN, HIGH);
-    digitalWrite(GREEN_PIN, LOW);
-    Serial.println("Lock engaged.");
-  } else { // disengage lock
-    digitalWrite(RED_PIN, LOW);
-    digitalWrite(GREEN_PIN, HIGH);
-    Serial.println("Lock disengaged.");
+  if (isLocked) { 
+    // LOCK: Rotate stepper motor to engage lock
+    Serial.println("Rotating stepper motor to engage lock...");
+    stepper.step(STEPPER_LOCK_STEPS);
+    Serial.print("Lock engaged. Rotated ");
+    Serial.print(STEPPER_LOCK_STEPS);
+    Serial.println(" steps");
+  } else { 
+    // UNLOCK: Rotate stepper motor to disengage lock
+    Serial.println("Rotating stepper motor to disengage lock...");
+    stepper.step(STEPPER_UNLOCK_STEPS);
+    Serial.print("Lock disengaged. Rotated ");
+    Serial.print(STEPPER_UNLOCK_STEPS);
+    Serial.println(" steps");
   }
   Serial.flush();
   

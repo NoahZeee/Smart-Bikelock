@@ -3,22 +3,26 @@
 /** DEVICE INFO ************************/
 #define DEVICE_NAME "Bike Lock"
 
-/** LED PIN DEFINITIONS ************************/
+/** STATUS LED PIN (connection indicator) ************************/
 #define LED_PIN 2
-#define RED_PIN 25
-#define GREEN_PIN 26
-#define NUM_LEDS 1
 
-/** STEPPER MOTOR PINS ************************/
-#define STEPPER_PIN_1 14
-#define STEPPER_PIN_2 16
-#define STEPPER_PIN_3 15
-#define STEPPER_PIN_4 17
+/** STEPPER MOTOR CONFIGURATION ************************/
+#define STEPPER_PIN_1 13
+#define STEPPER_PIN_2 25
+#define STEPPER_PIN_3 14
+#define STEPPER_PIN_4 26
 #define STEPS_PER_REV 2048
 
+// Stepper motor rotation amounts
+// Adjust these values based on your lock mechanism
+// Positive values = clockwise, negative = counterclockwise
+#define STEPPER_LOCK_STEPS 1024      // Steps to rotate when locking (adjust as needed)
+#define STEPPER_UNLOCK_STEPS -1024   // Steps to rotate when unlocking (negative of lock)
+#define STEPPER_SPEED 10            // RPM speed for stepper motor
+
 /** TOUCH WAKE PINS (for deep sleep) *****/
-#define TOUCH_WAKE_PIN_1 12
-#define TOUCH_WAKE_PIN_2 13
+#define TOUCH_WAKE_PIN_1 18
+#define TOUCH_WAKE_PIN_2 15
 
 /** SLEEP CONFIGURATION *****/
 #define INACTIVITY_TIMEOUT_MS (30 * 1000) // 30 seconds
