@@ -6315,7 +6315,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm"
 			(at 29.21 91.44 0)
 			(effects
 				(font
@@ -6385,7 +6385,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 97.536 175.514 90)
 			(effects
 				(font
@@ -6455,7 +6455,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Rect_L4.0mm_W2.5mm_P2.50mm"
 			(at 98.7552 31.75 0)
 			(effects
 				(font
@@ -6723,7 +6723,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 74.676 185.674 90)
 			(effects
 				(font
@@ -6922,7 +6922,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm"
 			(at 24.13 62.23 0)
 			(effects
 				(font
@@ -7055,7 +7055,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_THT:LED_D5.0mm"
 			(at 217.17 48.26 0)
 			(effects
 				(font
@@ -7317,7 +7317,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 228.854 47.244 90)
 			(effects
 				(font
@@ -7450,7 +7450,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_THT:LED_D5.0mm"
 			(at 102.87 139.7 0)
 			(effects
 				(font
@@ -7595,7 +7595,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D6.0mm_W4.4mm_P5.00mm"
 			(at 214.3252 34.29 0)
 			(effects
 				(font
@@ -7655,7 +7655,7 @@
 				)
 			)
 		)
-		(property "Value" "USB_B_Micro"
+		(property "Value" "USB_prog"
 			(at 139.7 24.13 0)
 			(effects
 				(font
@@ -7663,7 +7663,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_USB:USB_Micro-B_Amphenol_10118193-0001LF_Horizontal"
+		(property "Footprint" "Connector_USB:USB_Micro-B_Amphenol_10118194_Horizontal"
 			(at 143.51 35.56 0)
 			(effects
 				(font
@@ -7744,7 +7744,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D6.0mm_W4.4mm_P5.00mm"
 			(at 87.3252 182.88 0)
 			(effects
 				(font
@@ -7811,7 +7811,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.1mm_W3.2mm_P5.00mm"
 			(at 27.94 73.9648 0)
 			(effects
 				(font
@@ -7947,7 +7947,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 42.926 29.464 90)
 			(effects
 				(font
@@ -8227,7 +8227,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
 			(at 93.6752 142.24 0)
 			(effects
 				(font
@@ -8294,7 +8294,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_THT:LED_D5.0mm"
 			(at 96.52 182.88 0)
 			(effects
 				(font
@@ -8436,7 +8436,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_MicroSMP_AK"
 			(at 68.58 167.64 0)
 			(effects
 				(font
@@ -8572,7 +8572,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.1mm_W3.2mm_P5.00mm"
 			(at 110.1852 31.75 0)
 			(effects
 				(font
@@ -8705,7 +8705,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 99.314 146.304 90)
 			(effects
 				(font
@@ -8967,7 +8967,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
 			(at 42.8752 44.45 0)
 			(effects
 				(font
@@ -9034,7 +9034,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.1mm_W3.2mm_P5.00mm"
 			(at 33.02 100.6348 0)
 			(effects
 				(font
@@ -9330,7 +9330,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 74.676 171.704 90)
 			(effects
 				(font
@@ -9587,7 +9587,7 @@
 				)
 			)
 		)
-		(property "Value" "USB_B_Micro"
+		(property "Value" "USB_battery"
 			(at 196.85 19.05 0)
 			(effects
 				(font
@@ -9595,7 +9595,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_USB:USB_Micro-B_Amphenol_10118193-0001LF_Horizontal"
+		(property "Footprint" "Connector_USB:USB_Micro-B_Amphenol_10118194_Horizontal"
 			(at 200.66 30.48 0)
 			(effects
 				(font
@@ -9747,7 +9747,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
 			(at 39.0652 142.24 0)
 			(effects
 				(font
@@ -9815,7 +9815,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_THT:L_Radial_D7.0mm_P3.00mm"
 			(at 48.26 167.64 0)
 			(effects
 				(font
@@ -9882,7 +9882,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 34.544 66.294 90)
 			(effects
 				(font
@@ -10015,7 +10015,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 225.044 40.894 90)
 			(effects
 				(font
@@ -10150,7 +10150,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_THT:C_Disc_D6.0mm_W4.4mm_P5.00mm"
 			(at 33.9852 182.88 0)
 			(effects
 				(font
