@@ -5,7 +5,7 @@
 
 /**
  * Lock Control Module Implementation
- * Stepper motor control with flash persistence and BLE sync
+ * Stepper motor control with flash persistence
  */
 
 void updateLockState(bool locked) {
@@ -32,21 +32,7 @@ void updateLockState(bool locked) {
   }
   Serial.flush();
   
-  // Update BLE characteristic value
-  if (statusChar) {
-    Serial.print("Setting BLE characteristic to: ");
-    Serial.println(statusValue);
-    statusChar->setValue(statusValue.c_str());
-    Serial.println("BLE characteristic value set successfully");
-  } else {
-    Serial.println("ERROR: statusChar is NULL!");
-  }
-  Serial.flush();
-
-  // Send notification once at the end
-  if (statusChar) {
-    statusChar->notify();
-    Serial.println("BLE notification sent");
-  }
+  Serial.print("Lock state: ");
+  Serial.println(statusValue);
   Serial.flush();
 }

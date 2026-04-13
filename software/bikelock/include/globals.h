@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Arduino.h>
-#include <BLEDevice.h>
 #include <Stepper.h>
 #include <config.h>
 
@@ -11,9 +10,7 @@
 
 extern String storedPassword;
 extern bool isLocked;
-extern BLECharacteristic *statusChar;
 extern unsigned long lastActivityTime;
-extern bool deviceConnected;
 extern Stepper stepper;
 
 // Forward declarations

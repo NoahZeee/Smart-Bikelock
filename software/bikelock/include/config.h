@@ -25,7 +25,7 @@
 #define TOUCH_WAKE_PIN_2 15
 
 /** SLEEP CONFIGURATION *****/
-#define INACTIVITY_TIMEOUT_MS (30 * 1000) // 30 seconds
+#define INACTIVITY_TIMEOUT_MS (3 * 60 * 1000) // 5 minutes (300 seconds)
 
 /** SPIFFS CONFIGURATION *****/
 #define SPIFFS_MOUNT_POINT "/spiffs"
@@ -35,3 +35,12 @@
 #define BIKELOCK_SERVICE_UUID "1ea28c9d-23ce-4f5b-9290-8b72317b97c3"
 #define COMMAND_CHAR_UUID "5a87b3d0-7c7d-4c5b-bf2c-5e7a0f1a0a01"
 #define STATUS_CHAR_UUID  "5a87b3d0-7c7d-4c5b-bf2c-5e7a0f1a0a02"
+
+/** WIFI HOTSPOT CONFIGURATION ************************/
+#define WIFI_SSID "BikelockAP"           // WiFi network name
+#define WIFI_PASSWORD ""                // WiFi password (empty = open network)
+#define WIFI_MODE_ENABLED true           // Enable WiFi hotspot (true/false)
+#define HTTP_SERVER_PORT 80              // HTTP port (80 is standard)
+
+/** BLE CONFIGURATION ************************/
+#define BLE_ENABLED true                 // Enable BLE (true/false)

@@ -19,8 +19,6 @@ void processCommand(String cmd) {
   if(cmd.startsWith("SET ")) {
     // Security: Only allow setting password when UNLOCKED
     if (isLocked) {
-      statusChar->setValue("LOCKED_CANNOT_SET");
-      statusChar->notify();
       Serial.println("ERROR: Cannot set password while locked. Unlock device first.");
       Serial.flush();
     } else {
@@ -39,8 +37,6 @@ void processCommand(String cmd) {
       Serial.println("Correct password. Lock disengaged.");
       Serial.flush();
     } else {
-      statusChar->setValue("WRONG_PASS");
-      statusChar->notify();
       Serial.println("Incorrect password attempt.");
       Serial.flush();
     }
@@ -48,8 +44,6 @@ void processCommand(String cmd) {
   else if(cmd.startsWith("LOCK")) {
     // Security: Only allow locking if a password has been set
     if (storedPassword.length() == 0) {
-      statusChar->setValue("ERROR_NO_PASSWORD");
-      statusChar->notify();
       Serial.println("ERROR: Cannot lock device without a password set. Use SET [password] first.");
       Serial.flush();
     } else {
@@ -57,11 +51,8 @@ void processCommand(String cmd) {
     }
   }
   else if(cmd.startsWith("STATUS")) {
-    if(isLocked)
-      statusChar->setValue("LOCKED");
-    else
-      statusChar->setValue("UNLOCKED");
-    statusChar->notify();
+    Serial.print("Lock status: ");
+    Serial.println(isLocked ? "LOCKED" : "UNLOCKED");
   }
   else if(cmd.startsWith("RESET")) {
     deletePasswordFromFlash();
