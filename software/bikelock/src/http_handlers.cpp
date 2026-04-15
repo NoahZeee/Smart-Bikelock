@@ -4,6 +4,7 @@
 #include <commands.h>
 #include <config.h>
 #include <SPIFFS.h>
+#include <web_ui.h>
 
 /**
  * HTTP Request Handlers Implementation
@@ -29,18 +30,9 @@ void registerHTTPRoutes() {
 }
 
 void handleRoot() {
-  // Serve index.html from SPIFFS
-  if (SPIFFS.exists("/index.html")) {
-    File file = SPIFFS.open("/index.html", "r");
-    if (file) {
-      httpServer.streamFile(file, "text/html");
-      file.close();
-      return;
-    }
-  }
-  
-  // Fallback if file not found
-  httpServer.send(200, "text/html", "<h1>Smart Bike Lock</h1><p>Web UI not available</p>");
+  lastActivityTime = millis();  // Keep device awake on HTTP activity
+  Serial.println("GET / - Serving embedded web UI");
+  httpServer.send(200, "text/html", INDEX_HTML);
 }
 
 void handleStatus() {

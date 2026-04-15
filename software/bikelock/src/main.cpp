@@ -49,6 +49,24 @@ void setup() {
     return;
   }
   Serial.println("SPIFFS mounted successfully");
+  
+  // Debug: List SPIFFS contents
+  Serial.println("SPIFFS Contents:");
+  File root = SPIFFS.open("/");
+  File file = root.openNextFile();
+  int fileCount = 0;
+  while (file) {
+    Serial.print("  - ");
+    Serial.print(file.name());
+    Serial.print(" (");
+    Serial.print(file.size());
+    Serial.println(" bytes)");
+    fileCount++;
+    file = root.openNextFile();
+  }
+  if (fileCount == 0) {
+    Serial.println("  (No files found in SPIFFS!)");
+  }
 
   // Load persistent state from flash
   storedPassword = loadPasswordFromFlash();
