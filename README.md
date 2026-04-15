@@ -194,10 +194,6 @@ include/
 - [ ] Tamper detection
 - [ ] Location tracking integration
 
-## License
-
-[Your License Here]
-
 ## Authors
 
 Noah Zacharia, Peter Luster, Kirollos Melek
