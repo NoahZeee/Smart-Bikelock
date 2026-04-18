@@ -8,12 +8,10 @@
  */
 
 /**
- * Update lock state and notify BLE clients
+ * Update lock state and persist state
  * Handles:
- * - LED indicator updates
  * - Lock state persistence to flash
- * - BLE characteristic value update
- * - BLE notification broadcast
+ * - Stepper motor control
  * 
  * @param locked true to engage lock, false to disengage
  */

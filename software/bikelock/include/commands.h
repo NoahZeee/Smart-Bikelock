@@ -15,7 +15,7 @@
  */
 
 /**
- * Process incoming command from BLE client
+ * Process incoming command
  * @param cmd The command string to process
  */
 void processCommand(String cmd);

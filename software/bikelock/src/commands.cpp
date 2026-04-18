@@ -5,7 +5,7 @@
 
 /**
  * Commands Module Implementation
- * BLE command parsing and execution with security checks
+ * Command parsing and execution with security checks
  */
 
 void processCommand(String cmd) {

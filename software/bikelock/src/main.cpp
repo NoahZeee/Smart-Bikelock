@@ -10,10 +10,13 @@
  * Authors: Noah Z, Peter S, Kirollos M
  */
 
+// TODO test deep sleep wakeup functionality
+
 #include <Arduino.h>
 #include <config.h>
 #include <SPIFFS.h>
 #include <esp_sleep.h>
+#include <WiFi.h>
 
 // Module headers
 #include <globals.h>
@@ -24,13 +27,13 @@
 #include <http_handlers.h>
 
 /**
- * Initialize the device: SPIFFS, BLE, GPIO, and deep sleep configuration
+ * Initialize the device: SPIFFS, GPIO, and deep sleep configuration
  */
 void setup() {
   Serial.begin(115200);
   delay(2000);
   Serial.println("\n\n==================================");
-  Serial.println("Bike Lock BLE Server - Initializing");
+  Serial.println("Bike Lock WiFi Server - Initializing");
   Serial.println("==================================\n");
 
   // Check if waking from deep sleep
@@ -78,8 +81,8 @@ void setup() {
 
   stepper.setSpeed(STEPPER_SPEED); // Set stepper motor speed (RPM)
 
-  // BLE removed - using WiFi hotspot instead
-  Serial.println("\n--- WiFi Mode Enabled (No BLE)");
+  // Initialize WiFi hotspot
+  Serial.println("\n--- WiFi Hotspot Mode Enabled ---");
 
   // Set initial lock state from saved state
   updateLockState(savedLockState);
@@ -126,12 +129,18 @@ void loop() {
     Serial.print("Last activity: ");
     Serial.print(millis() - lastActivityTime);
     Serial.println(" ms ago");
-    Serial.print("To wake up: Press button on GPIO");
-    Serial.println(TOUCH_WAKE_PIN_1);
+    Serial.print("GPIO18 state before sleep: ");
+    Serial.println(digitalRead(TOUCH_WAKE_PIN_1));
+    Serial.print("To wake up: Connect GPIO18 to 3.3V");
+    Serial.println("");
     Serial.println("========================================\n");
     Serial.flush();
-    delay(200); // Allow serial to flush completely
+    delay(500); // Allow serial to flush completely
 
+    // Turn off WiFi to save power
+    WiFi.mode(WIFI_OFF);
+    btStop();
+    
     esp_deep_sleep_start();
   }
 

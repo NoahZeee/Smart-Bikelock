@@ -185,15 +185,6 @@ include/
 - Try `platformio run --target clean` then rebuild
 - Check COM port in `platformio.ini`
 
-## Future Enhancements
-
-- [ ] OTA (Over-The-Air) firmware updates
-- [ ] Multiple user passwords/permissions
-- [ ] Activity logging/history
-- [ ] Optional BLE for nearby notifications
-- [ ] Tamper detection
-- [ ] Location tracking integration
-
 ## Authors
 
 Noah Zacharia, Peter Luster, Kirollos Melek
