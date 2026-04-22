@@ -802,6 +802,292 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Connector:Conn_01x05_Pin"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x05_Pin"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x05, script generated"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_01x05_Pin_1_1"
+				(rectangle
+					(start 0.8636 5.207)
+					(end 0 4.953)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start 0.8636 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start 0.8636 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start 0.8636 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start 0.8636 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 5.08) (xy 0.8636 5.08)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 2.54) (xy 0.8636 2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy 0.8636 0)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -2.54) (xy 0.8636 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -5.08) (xy 0.8636 -5.08)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 5.08 5.08 180)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 2.54 180)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 -2.54 180)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 -5.08 180)
+					(length 3.81)
+					(name "Pin_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Connector:Conn_01x08_Socket"
 			(pin_names
 				(offset 1.016)
@@ -1983,51 +2269,30 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Motor:Stepper_Motor_unipolar_5pin"
+		(symbol "Mechanical:MountingHole"
 			(pin_names
-				(offset 0)
-				(hide yes)
+				(offset 1.016)
 			)
 			(exclude_from_sim no)
-			(in_bom yes)
+			(in_bom no)
 			(on_board yes)
-			(property "Reference" "M"
-				(at 3.81 2.54 0)
+			(property "Reference" "H"
+				(at 0 5.08 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 				)
 			)
-			(property "Value" "Stepper_Motor_unipolar_5pin"
-				(at 3.81 1.27 0)
+			(property "Value" "MountingHole"
+				(at 0 3.175 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left top)
 				)
 			)
 			(property "Footprint" ""
-				(at 0.254 -0.254 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "http://www.infineon.com/dgdl/Application-Note-TLE8110EE_driving_UniPolarStepperMotor_V1.1.pdf?fileId=db3a30431be39b97011be5d0aa0a00b0"
-				(at 0.254 -0.254 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "5-wire unipolar stepper motor"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2036,7 +2301,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "unipolar stepper motor"
+			(property "Datasheet" "~"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2045,7 +2310,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "PinHeader*P2.54mm* TerminalBlock*"
+			(property "Description" "Mounting Hole without connection"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2054,216 +2319,30 @@
 					(hide yes)
 				)
 			)
-			(symbol "Stepper_Motor_unipolar_5pin_0_0"
-				(polyline
-					(pts
-						(xy -1.27 -1.778) (xy -1.27 2.032) (xy 0 -0.508) (xy 1.27 2.032) (xy 1.27 -1.778)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
+					(hide yes)
 				)
 			)
-			(symbol "Stepper_Motor_unipolar_5pin_0_1"
-				(circle
-					(center -5.08 5.08)
-					(radius 0.0001)
-					(stroke
-						(width 0)
-						(type default)
+			(property "ki_fp_filters" "MountingHole*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
-					(fill
-						(type outline)
-					)
+					(hide yes)
 				)
-				(circle
-					(center -5.08 5.08)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -5.08 5.08) (xy -5.08 0) (xy -4.445 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -5.08 2.54) (xy -4.445 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -5.08 -2.54) (xy -4.445 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -4.445 2.54)
-					(mid -3.8127 1.905)
-					(end -4.445 1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -4.445 1.27)
-					(mid -3.8127 0.635)
-					(end -4.445 0)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -4.445 0)
-					(mid -3.8127 -0.635)
-					(end -4.445 -1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -4.445 -1.27)
-					(mid -3.8127 -1.905)
-					(end -4.445 -2.54)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 4.445) (xy -2.54 5.08)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -1.27 4.445)
-					(mid -1.905 3.8127)
-					(end -2.54 4.445)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 4.445)
-					(mid -0.635 3.8127)
-					(end -1.27 4.445)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 4.445) (xy 0 5.08) (xy -5.08 5.08)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
+			)
+			(symbol "MountingHole_0_1"
 				(circle
 					(center 0 0)
-					(radius 3.2512)
+					(radius 1.27)
 					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 1.27 4.445)
-					(mid 0.635 3.8127)
-					(end 0 4.445)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 2.54 4.445)
-					(mid 1.905 3.8127)
-					(end 1.27 4.445)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 4.445) (xy 2.54 5.08)
-					)
-					(stroke
-						(width 0)
+						(width 1.27)
 						(type default)
 					)
 					(fill
@@ -2271,47 +2350,98 @@
 					)
 				)
 			)
-			(symbol "Stepper_Motor_unipolar_5pin_1_1"
-				(pin passive line
-					(at -7.62 2.54 0)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 -2.54 0)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
+			(embedded_fonts no)
+		)
+		(symbol "Mechanical:MountingHole_Pad"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
 					)
 				)
-				(pin passive line
-					(at -5.08 7.62 270)
+			)
+			(property "Value" "MountingHole_Pad"
+				(at 0 4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole with connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*Pad*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_Pad_0_1"
+				(circle
+					(center 0 1.27)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MountingHole_Pad_1_1"
+				(pin input line
+					(at 0 -2.54 90)
 					(length 2.54)
-					(name "~"
+					(name "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2319,42 +2449,6 @@
 						)
 					)
 					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -2.54 7.62 270)
-					(length 2.54)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 7.62 270)
-					(length 2.54)
-					(name "-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5343,6 +5437,16 @@
 		)
 		(uuid e9a577e9-1f35-4d63-9643-268022e98a88)
 	)
+	(text "Main board mounting holes"
+		(exclude_from_sim no)
+		(at 179.324 87.122 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+			)
+		)
+		(uuid "0280a4c9-d661-41ba-a513-0ef131584a05")
+	)
 	(text "Program Bus - using built in USB OTG on esp32-s3"
 		(exclude_from_sim no)
 		(at 125.222 70.866 0)
@@ -5443,6 +5547,16 @@
 		)
 		(uuid "8d7dd7c7-3507-4de4-8830-c6cde71c4ef1")
 	)
+	(text "Button board mounting holes"
+		(exclude_from_sim no)
+		(at 235.712 88.392 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+			)
+		)
+		(uuid "95f47444-623a-4800-a8bb-40916296fdde")
+	)
 	(text "R_prog1 kOhm = 1000V/[max_charge_current]mA\nR_prog3 kOhm = 1000V/[charge_cutoff_curren]mA"
 		(exclude_from_sim no)
 		(at 179.578 75.438 0)
@@ -5540,6 +5654,12 @@
 		(uuid "1a628e3d-8db9-4a1d-956f-97fb283ef377")
 	)
 	(junction
+		(at 185.42 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "34767b6f-afad-4777-84a8-efbc368d2706")
+	)
+	(junction
 		(at 52.07 39.37)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5562,12 +5682,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "62cb79b3-0165-44ad-a3c5-e3de488f662c")
-	)
-	(junction
-		(at 182.88 138.43)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6b5e4be9-25c5-4529-b9a1-2bec3ed15c84")
 	)
 	(junction
 		(at 203.2 26.67)
@@ -5612,18 +5726,6 @@
 		(uuid "a3f9bc46-f9ec-4cbc-8fb6-a3f39cb46162")
 	)
 	(junction
-		(at 182.88 135.89)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ae7f8171-4654-4ba8-97e9-a0777a73b85d")
-	)
-	(junction
-		(at 184.15 130.81)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b055e9d5-9714-46c8-8367-027c7ecd0dc2")
-	)
-	(junction
 		(at 233.68 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5634,12 +5736,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b56e10db-cffd-458c-bec3-8360cc257b0b")
-	)
-	(junction
-		(at 182.88 140.97)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "bbf08c33-7744-4b76-8813-67bf60a82b36")
 	)
 	(junction
 		(at 111.76 36.83)
@@ -5670,12 +5766,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "cfdd0ca5-8075-4759-a1fa-d14e6af5a2cb")
-	)
-	(junction
-		(at 182.88 130.81)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d017c410-eed2-43c7-aca4-ccadeeca2061")
 	)
 	(junction
 		(at 227.33 34.29)
@@ -5851,16 +5941,6 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 135.89) (xy 182.88 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0408d19b-4c54-4d6f-83b4-712199338531")
-	)
-	(wire
-		(pts
 			(xy 34.29 166.37) (xy 46.99 166.37)
 		)
 		(stroke
@@ -5941,16 +6021,6 @@
 	)
 	(wire
 		(pts
-			(xy 184.15 130.81) (xy 184.15 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "14124df4-7146-495c-9262-dd5b9210f9f9")
-	)
-	(wire
-		(pts
 			(xy 24.13 166.37) (xy 26.67 166.37)
 		)
 		(stroke
@@ -5978,6 +6048,16 @@
 			(type default)
 		)
 		(uuid "17a5e7e8-0d32-4af4-afde-21ceb0cc1871")
+	)
+	(wire
+		(pts
+			(xy 185.42 130.81) (xy 176.53 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "188eace5-36f6-405f-b31f-4c12d8ef2998")
 	)
 	(wire
 		(pts
@@ -6031,16 +6111,6 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 138.43) (xy 190.5 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1f5859d5-9aee-4011-8ca4-cb6aa7422fe0")
-	)
-	(wire
-		(pts
 			(xy 236.22 67.31) (xy 237.49 67.31)
 		)
 		(stroke
@@ -6088,26 +6158,6 @@
 			(type default)
 		)
 		(uuid "2757ce6e-efbc-4bee-aa1f-1c88dd0b43f5")
-	)
-	(wire
-		(pts
-			(xy 176.53 130.81) (xy 182.88 130.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "28032f6e-0f33-4641-924d-d1a9e6cdf8ff")
-	)
-	(wire
-		(pts
-			(xy 176.53 135.89) (xy 182.88 135.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2ad17d33-e6b3-4cff-96bb-41cf388234b6")
 	)
 	(wire
 		(pts
@@ -6161,6 +6211,16 @@
 	)
 	(wire
 		(pts
+			(xy 185.42 146.05) (xy 193.04 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34cbd26f-0596-404d-8902-df32e157789d")
+	)
+	(wire
+		(pts
 			(xy 147.32 186.69) (xy 147.32 182.88)
 		)
 		(stroke
@@ -6188,6 +6248,16 @@
 			(type default)
 		)
 		(uuid "36adfaf8-8adf-40a5-98cf-f51434c78667")
+	)
+	(wire
+		(pts
+			(xy 176.53 135.89) (xy 193.04 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37079e30-77b9-40d4-a3da-4c7cd9fc0b44")
 	)
 	(wire
 		(pts
@@ -6291,16 +6361,6 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 130.81) (xy 184.15 130.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "42d15ed7-6c17-47bd-a709-b1f97cec3bfc")
-	)
-	(wire
-		(pts
 			(xy 30.48 93.98) (xy 30.48 99.06)
 		)
 		(stroke
@@ -6341,6 +6401,16 @@
 	)
 	(wire
 		(pts
+			(xy 176.53 140.97) (xy 193.04 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "470212f7-be8c-474a-b406-d3962aac93f3")
+	)
+	(wire
+		(pts
 			(xy 48.26 99.06) (xy 48.26 93.98)
 		)
 		(stroke
@@ -6368,16 +6438,6 @@
 			(type default)
 		)
 		(uuid "4a18f647-583c-419d-b9dd-78a261c8fcbc")
-	)
-	(wire
-		(pts
-			(xy 182.88 144.78) (xy 195.58 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4cbade9f-976a-4758-99c6-ffc6d4a9a32e")
 	)
 	(wire
 		(pts
@@ -6431,16 +6491,6 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 146.05) (xy 200.66 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "52293e8d-7bd6-4f30-a582-6d88239c3655")
-	)
-	(wire
-		(pts
 			(xy 62.23 85.09) (xy 64.77 85.09)
 		)
 		(stroke
@@ -6458,16 +6508,6 @@
 			(type default)
 		)
 		(uuid "560d4350-1ddf-4718-90b7-db3ae63a840b")
-	)
-	(wire
-		(pts
-			(xy 176.53 138.43) (xy 182.88 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "572a5dc1-be97-4ac0-b653-e416707e8c9d")
 	)
 	(wire
 		(pts
@@ -6521,6 +6561,16 @@
 	)
 	(wire
 		(pts
+			(xy 185.42 130.81) (xy 185.42 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f6c5e15-b417-4e95-8ed0-5e051f53b004")
+	)
+	(wire
+		(pts
 			(xy 233.68 152.4) (xy 233.68 142.24)
 		)
 		(stroke
@@ -6558,16 +6608,6 @@
 			(type default)
 		)
 		(uuid "6a379b99-fea9-4733-9a8e-1c4f8e1b6435")
-	)
-	(wire
-		(pts
-			(xy 184.15 130.81) (xy 184.15 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6c2c35c1-0fea-4ef3-a9a1-64cd1cdef399")
 	)
 	(wire
 		(pts
@@ -6701,16 +6741,6 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 143.51) (xy 181.61 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "82bf985d-10e8-41a2-812c-a962b68620db")
-	)
-	(wire
-		(pts
 			(xy 102.87 143.51) (xy 102.87 147.32)
 		)
 		(stroke
@@ -6781,16 +6811,6 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 140.97) (xy 184.15 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "923de945-53b3-47f2-b09d-f95b79d6f628")
-	)
-	(wire
-		(pts
 			(xy 167.64 24.13) (xy 203.2 24.13)
 		)
 		(stroke
@@ -6848,16 +6868,6 @@
 			(type default)
 		)
 		(uuid "9c6e5574-d06d-47b5-a33c-6040d4e82318")
-	)
-	(wire
-		(pts
-			(xy 181.61 143.51) (xy 181.61 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9d503ad7-4175-44dd-9b96-319058507578")
 	)
 	(wire
 		(pts
@@ -6968,16 +6978,6 @@
 			(type default)
 		)
 		(uuid "ab72ed2f-9b47-47c8-aa3f-2baad449414e")
-	)
-	(wire
-		(pts
-			(xy 182.88 130.81) (xy 182.88 135.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "aebd04f4-078d-48c4-8163-8dd722a5f5ed")
 	)
 	(wire
 		(pts
@@ -7101,16 +7101,6 @@
 	)
 	(wire
 		(pts
-			(xy 184.15 130.81) (xy 190.5 130.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bf78eb6c-d163-4455-b551-91cab55f3039")
-	)
-	(wire
-		(pts
 			(xy 143.51 143.51) (xy 156.21 143.51)
 		)
 		(stroke
@@ -7161,16 +7151,6 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 130.81) (xy 190.5 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c80ecf13-b4cb-4ebe-954c-62817a4f7fa7")
-	)
-	(wire
-		(pts
 			(xy 67.31 173.99) (xy 73.66 173.99)
 		)
 		(stroke
@@ -7178,16 +7158,6 @@
 			(type default)
 		)
 		(uuid "c84aaf6e-9e8a-41f8-b908-1b038a968a59")
-	)
-	(wire
-		(pts
-			(xy 181.61 146.05) (xy 200.66 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cd4b534b-1c1f-4396-9333-618acf345ac1")
 	)
 	(wire
 		(pts
@@ -7271,16 +7241,6 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 144.78) (xy 195.58 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d5c3eb7c-36b1-4c12-b1ca-af9b767a9ab2")
-	)
-	(wire
-		(pts
 			(xy 271.78 93.98) (xy 275.59 93.98)
 		)
 		(stroke
@@ -7341,13 +7301,13 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 140.97) (xy 182.88 144.78)
+			(xy 176.53 143.51) (xy 193.04 143.51)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e3a4285b-e1a2-4697-b84d-f549a59b6eb8")
+		(uuid "e24e741b-4e9a-4e94-b020-cca1f03f8ab2")
 	)
 	(wire
 		(pts
@@ -7371,6 +7331,16 @@
 	)
 	(wire
 		(pts
+			(xy 176.53 138.43) (xy 193.04 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f02962e8-f116-46ff-a974-5e649da7e53d")
+	)
+	(wire
+		(pts
 			(xy 48.26 93.98) (xy 50.8 93.98)
 		)
 		(stroke
@@ -7391,13 +7361,13 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 140.97) (xy 182.88 140.97)
+			(xy 185.42 124.46) (xy 185.42 130.81)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f12e5478-8f52-44ef-aaff-36aed2d552a1")
+		(uuid "f1de351d-451f-4378-a830-14802ff7a6e4")
 	)
 	(wire
 		(pts
@@ -7448,16 +7418,6 @@
 			(type default)
 		)
 		(uuid "f782d122-fb29-4033-851f-5342779b2651")
-	)
-	(wire
-		(pts
-			(xy 182.88 140.97) (xy 182.88 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f89b0db7-be10-485f-a26e-9a70ff8eb611")
 	)
 	(wire
 		(pts
@@ -8392,6 +8352,84 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:Conn_01x05_Pin")
+		(at 198.12 140.97 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0f55186f-fb36-40cf-b8fc-bcc05c385a58")
+		(property "Reference" "J3"
+			(at 199.39 139.6999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "motor_out"
+			(at 199.644 141.732 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
+			(at 198.12 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 198.12 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x05, script generated"
+			(at 198.12 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "5"
+			(uuid "90f28cb7-865d-43d5-9e95-1b008d7bbfa1")
+		)
+		(pin "1"
+			(uuid "d607f6e5-4d11-45e7-94e6-6622a9de7703")
+		)
+		(pin "3"
+			(uuid "c52c4831-eb17-4f63-8608-5d97c169fc58")
+		)
+		(pin "2"
+			(uuid "c1e88793-4699-46ee-8841-f096130ee1d9")
+		)
+		(pin "4"
+			(uuid "9e797a5d-d2db-41fd-8d49-17ec993b4dc2")
+		)
+		(instances
+			(project ""
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 88.9 176.53 0)
 		(unit 1)
@@ -9201,6 +9239,138 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 163.83 95.25 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3ef8379e-a130-431c-bb4e-186182e19489")
+		(property "Reference" "#PWR023"
+			(at 163.83 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 163.83 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 163.83 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 163.83 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 163.83 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "884f5423-5cdf-4bbc-88de-1a780bee7b59")
+		)
+		(instances
+			(project "RFID_bikelock"
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(reference "#PWR023")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 186.69 104.14 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "40158e9e-26e4-4b85-b87f-8ee12d139559")
+		(property "Reference" "H4"
+			(at 189.23 101.5999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 189.23 104.1399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
+			(at 186.69 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 186.69 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 186.69 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ee2d104f-b83a-4530-9afa-6711820d7dd7")
+		)
+		(instances
+			(project "RFID_bikelock"
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(reference "H4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 92.71 166.37 0)
 		(unit 1)
@@ -9327,6 +9497,71 @@
 			(project "RFID_bikelock"
 				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
 					(reference "#PWR015")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 163.83 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4381a156-f8b3-4e5f-9cdb-4992aa2935d9")
+		(property "Reference" "#PWR037"
+			(at 163.83 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 163.83 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 163.83 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 163.83 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 163.83 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fc17e64a-216b-4a6f-bd43-509ed7c56def")
+		)
+		(instances
+			(project "RFID_bikelock"
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(reference "#PWR037")
 					(unit 1)
 				)
 			)
@@ -10026,6 +10261,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 163.83 104.14 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "60f43700-63fc-4e90-a530-c2175176e41c")
+		(property "Reference" "H3"
+			(at 166.37 101.5999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 166.37 104.1399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
+			(at 163.83 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 163.83 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 163.83 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9a1cc57e-2287-4894-9e00-fd094d0b6d58")
+		)
+		(instances
+			(project "RFID_bikelock"
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(reference "H3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_US")
 		(at 34.29 170.18 0)
 		(unit 1)
@@ -10434,6 +10736,70 @@
 			(project "RFID_bikelock"
 				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
 					(reference "C8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 223.52 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "74f1d936-9b4a-4728-ba0e-daa06503d007")
+		(property "Reference" "H5"
+			(at 226.06 95.2499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 226.06 97.7899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 223.52 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 223.52 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 223.52 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project ""
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(reference "H5")
 					(unit 1)
 				)
 			)
@@ -10978,6 +11344,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 186.69 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8a407c40-ab53-40c4-8be9-154354ecc095")
+		(property "Reference" "#PWR036"
+			(at 186.69 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 186.69 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 186.69 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 186.69 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 186.69 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "93f6b291-6c28-46da-ad1f-0a320b0f0141")
+		)
+		(instances
+			(project "RFID_bikelock"
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(reference "#PWR036")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "my_lib:ADPL40502AUJZ-3.3-R7")
 		(at 44.45 134.62 0)
 		(unit 1)
@@ -11051,6 +11482,71 @@
 			(project ""
 				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
 					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 186.69 95.25 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8ecfaefd-35a3-46ec-b10e-1924918dad3c")
+		(property "Reference" "#PWR024"
+			(at 186.69 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 186.69 98.806 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 186.69 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 186.69 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 186.69 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "47e01d93-4bc4-4194-9c0f-ac288cc7566d")
+		)
+		(instances
+			(project "RFID_bikelock"
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(reference "#PWR024")
 					(unit 1)
 				)
 			)
@@ -11534,7 +12030,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 184.15 124.46 0)
+		(at 185.42 124.46 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11543,7 +12039,7 @@
 		(fields_autoplaced yes)
 		(uuid "a02c644c-1afb-4717-9e84-1520c0634f9d")
 		(property "Reference" "#PWR02"
-			(at 184.15 128.27 0)
+			(at 185.42 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11552,7 +12048,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 184.15 119.38 0)
+			(at 185.42 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11560,7 +12056,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 184.15 124.46 0)
+			(at 185.42 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11569,7 +12065,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 184.15 124.46 0)
+			(at 185.42 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11578,7 +12074,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 184.15 124.46 0)
+			(at 185.42 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11797,6 +12293,73 @@
 			(project "RFID_bikelock"
 				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
 					(reference "C12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 186.69 92.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b02a0b05-17a3-448d-8de6-fc5df99864e8")
+		(property "Reference" "H2"
+			(at 189.23 90.1699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 189.23 92.7099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
+			(at 186.69 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 186.69 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 186.69 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3c68af94-a7a5-4e0a-a1b1-20bbc9c6c415")
+		)
+		(instances
+			(project "RFID_bikelock"
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(reference "H2")
 					(unit 1)
 				)
 			)
@@ -12839,6 +13402,137 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 223.52 104.14 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cafeff23-58ed-4318-afd5-08aabcf9a9be")
+		(property "Reference" "H6"
+			(at 226.06 102.8699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 226.06 105.4099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 223.52 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 223.52 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 223.52 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project ""
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(reference "H6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 163.83 92.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d203f806-434b-4511-82f0-bb994508520c")
+		(property "Reference" "H1"
+			(at 166.37 90.1699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 166.37 92.7099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad"
+			(at 163.83 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 163.83 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 163.83 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "db8ad28b-364c-4416-9092-942bf422702d")
+		)
+		(instances
+			(project ""
+				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 113.03 120.65 180)
 		(unit 1)
@@ -12899,84 +13593,6 @@
 			(project "RFID_bikelock"
 				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
 					(reference "#PWR029")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Motor:Stepper_Motor_unipolar_5pin")
-		(at 198.12 135.89 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d733c796-1cfb-4faa-ae98-d7f10b4f52a0")
-		(property "Reference" "M1"
-			(at 203.2 135.5978 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "Stepper_Motor_unipolar_5pin"
-			(at 187.452 129.794 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical"
-			(at 198.374 135.636 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.infineon.com/dgdl/Application-Note-TLE8110EE_driving_UniPolarStepperMotor_V1.1.pdf?fileId=db3a30431be39b97011be5d0aa0a00b0"
-			(at 198.374 135.636 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "5-wire unipolar stepper motor"
-			(at 198.12 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "4"
-			(uuid "4219c397-3b46-45db-b2dd-2e82e8e2a495")
-		)
-		(pin "5"
-			(uuid "49563e9a-443a-4e7e-8222-3da210a369dc")
-		)
-		(pin "1"
-			(uuid "b8bf538a-1cfa-433a-9684-9b5a65e88913")
-		)
-		(pin "2"
-			(uuid "84a6873c-7739-4b9c-af38-072c6e9e60ef")
-		)
-		(pin "3"
-			(uuid "b29c3086-c32c-4c5d-a97e-072fcafdd96b")
-		)
-		(instances
-			(project "RFID_bikelock"
-				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
-					(reference "M1")
 					(unit 1)
 				)
 			)
