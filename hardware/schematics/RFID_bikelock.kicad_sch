@@ -7884,7 +7884,7 @@
 		(at 238.76 44.45 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -7926,6 +7926,15 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated"
+			(at 238.76 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 238.76 44.45 0)
 			(effects
 				(font
@@ -7994,6 +8003,15 @@
 		)
 		(property "Description" "Resistor, US symbol"
 			(at 250.19 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RMCF0603FT1K00"
+			(at 250.19 134.62 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8154,7 +8172,7 @@
 		(at 41.91 93.98 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "0bc8489f-0186-4509-b7e2-5de0487f8e56")
@@ -8201,6 +8219,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 41.91 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c5dcce0a-63ec-4d53-9dec-1dd903f4b35a")
 		)
@@ -8221,7 +8248,7 @@
 		(at 165.1 182.88 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "0c8a1ecf-22b8-40d2-8eb7-d1e0de55d64a")
@@ -8262,6 +8289,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 165.1 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 165.1 182.88 0)
 			(effects
 				(font
@@ -8336,6 +8372,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "CL10B104KB8NNNC"
+			(at 34.29 177.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4425d173-e407-4e34-a8b0-105427688069")
 		)
@@ -8356,7 +8401,7 @@
 		(at 198.12 140.97 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "0f55186f-fb36-40cf-b8fc-bcc05c385a58")
@@ -8397,6 +8442,15 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x05, script generated"
+			(at 198.12 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 198.12 140.97 0)
 			(effects
 				(font
@@ -8555,6 +8609,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "LTST-C170GKT"
+			(at 232.41 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "cbcfd0ae-150f-4686-9ac4-2b052a67b382")
 		)
@@ -8617,6 +8680,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 105.41 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21A106KOQNNNE"
 			(at 105.41 33.02 0)
 			(effects
 				(font
@@ -8892,6 +8964,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "CL21A106KOQNNNE"
+			(at 80.01 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "ea846d84-4e99-4dae-9fad-13440705a2e7")
 		)
@@ -8912,7 +8993,7 @@
 		(at 240.03 134.62 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "34a131ba-e1d6-45ca-9d24-2afabf8d1ba1")
@@ -8951,6 +9032,15 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 240.03 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 240.03 134.62 0)
 			(effects
 				(font
@@ -9045,7 +9135,7 @@
 		(at 36.83 64.77 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "38defc09-d347-431a-a14c-2490e02fc162")
@@ -9084,6 +9174,15 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 36.83 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 36.83 64.77 0)
 			(effects
 				(font
@@ -9358,6 +9457,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 186.69 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "ee2d104f-b83a-4530-9afa-6711820d7dd7")
 		)
@@ -9619,6 +9727,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "RC0603JR-07470RL"
+			(at 241.3 59.69 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c1be88ca-7ca1-4205-9b78-41eded1d49ca")
 		)
@@ -9639,7 +9756,7 @@
 		(at 280.67 101.6 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "47d49e11-ca56-40d1-8e2d-4b33b7c4842a")
@@ -9680,6 +9797,15 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x08, script generated"
+			(at 280.67 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 280.67 101.6 0)
 			(effects
 				(font
@@ -9847,6 +9973,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "LTST-C170GKT"
+			(at 240.03 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "9a20b8df-8c04-47d6-8243-138daed3be62")
 		)
@@ -9908,6 +10043,15 @@
 			)
 		)
 		(property "Description" "RF Module, ESP32-S3 SoC, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 3.3V, onboard antenna, SMD"
+			(at 80.01 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "ESP32-S3-WROOM-1-N4"
 			(at 80.01 62.23 0)
 			(effects
 				(font
@@ -10053,7 +10197,7 @@
 		(at 261.62 134.62 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -10095,6 +10239,15 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated"
+			(at 261.62 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 261.62 134.62 0)
 			(effects
 				(font
@@ -10171,6 +10324,15 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
+			(at 102.87 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "LTST-C170GKT"
 			(at 102.87 139.7 0)
 			(effects
 				(font
@@ -10315,6 +10477,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 163.83 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "9a1cc57e-2287-4894-9e00-fd094d0b6d58")
 		)
@@ -10373,6 +10544,15 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
+			(at 34.29 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-07100RL"
 			(at 34.29 170.18 0)
 			(effects
 				(font
@@ -10467,7 +10647,7 @@
 		(at 127 87.63 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -10507,6 +10687,15 @@
 			)
 		)
 		(property "Description" "USB Micro Type B connector"
+			(at 127 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 127 87.63 0)
 			(effects
 				(font
@@ -10659,6 +10848,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "RMCF0603FT10K0"
+			(at 179.07 54.61 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d4f91e93-6bbf-4b3e-bf1c-eb3b4f0ba8e9")
 		)
@@ -10719,6 +10917,15 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 36.83 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL10B104KB8NNNC"
+			(at 36.83 72.39 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10796,6 +11003,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 223.52 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project ""
 				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
@@ -10859,6 +11075,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "CL21A106KOQNNNE"
+			(at 26.67 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "86e9a0ca-4f57-4aa9-8c6d-c71e04d4220a")
 		)
@@ -10879,7 +11104,7 @@
 		(at 151.13 182.88 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "7839c464-f4c0-420f-aa8a-50d05037d361")
@@ -10920,6 +11145,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 151.13 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 151.13 182.88 0)
 			(effects
 				(font
@@ -10994,6 +11228,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "CL21A106KOQNNNE"
+			(at 167.64 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "db267f20-7dea-4a95-a82a-d5770ed5e66e")
 		)
@@ -11053,6 +11296,15 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
+			(at 165.1 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-0720KL"
 			(at 165.1 53.34 0)
 			(effects
 				(font
@@ -11263,6 +11515,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "RMCF0603FT10K0"
+			(at 52.07 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "891cfae3-34e2-459a-bace-bd4a3c24062e")
 		)
@@ -11455,6 +11716,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 44.45 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "ADPL40502AUJZ-3.3-R7"
 			(at 44.45 134.62 0)
 			(effects
 				(font
@@ -11671,6 +11941,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "CL10B105KA8NNNC"
+			(at 92.71 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "645f1c47-3162-4dd6-84e7-a0f5efa7bac5")
 		)
@@ -11797,6 +12076,15 @@
 			)
 		)
 		(property "Description" "Inductor"
+			(at 44.45 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "MAMK2520T2R2M"
 			(at 44.45 181.61 0)
 			(effects
 				(font
@@ -11939,6 +12227,15 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
+			(at 232.41 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "LTST-C170GKT"
 			(at 232.41 67.31 0)
 			(effects
 				(font
@@ -12149,6 +12446,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "CL10B104KB8NNNC"
+			(at 116.84 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "9aceb2bf-1418-4271-90b8-6d1b15d70eae")
 		)
@@ -12216,6 +12522,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "RC0603JR-07470RL"
+			(at 99.06 147.32 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5996a13e-9b5b-46fc-83e2-aa2539cd34ef")
 		)
@@ -12276,6 +12591,15 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 240.03 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL10B104KB8NNNC"
+			(at 240.03 142.24 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12353,6 +12677,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 186.69 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3c68af94-a7a5-4e0a-a1b1-20bbc9c6c415")
 		)
@@ -12417,6 +12750,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "RC0603FR-072KL"
+			(at 177.8 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "95af7f22-fe93-4014-9635-e4d5c37cde75")
 		)
@@ -12437,7 +12779,7 @@
 		(at 147.32 182.88 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "b459d8f7-404d-4d10-a061-ee7ddca816da")
@@ -12478,6 +12820,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 147.32 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 147.32 182.88 0)
 			(effects
 				(font
@@ -12946,6 +13297,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "ULN2003A"
+			(at 166.37 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "9"
 			(uuid "6efdadd9-3d6c-4138-a50f-752fc7fcb5e0")
 		)
@@ -13058,6 +13418,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "CL10B105KA8NNNC"
+			(at 52.07 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2ef3a1d0-c9a8-4cb0-83fc-8f340d82c482")
 		)
@@ -13122,6 +13491,15 @@
 			)
 		)
 		(property "Description" "Single cell, Li-Ion/Li-Po charge management controller, 4.20V, 6h safety timer, 3.1V LBO threshold"
+			(at 203.2 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "MCP73871-2CCI/ML"
 			(at 203.2 49.53 0)
 			(effects
 				(font
@@ -13320,6 +13698,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "CL10B104KB8NNNC"
+			(at 41.91 99.06 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "db2fce1a-557b-4ccd-8f44-ff68495022c2")
 		)
@@ -13456,6 +13843,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" ""
+			(at 223.52 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project ""
 				(path "/31a5fa84-3cda-422e-acc0-ce6e3fdccec6"
@@ -13512,6 +13908,15 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
+			(at 163.83 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 163.83 92.71 0)
 			(effects
 				(font
@@ -13603,7 +14008,7 @@
 		(at 158.75 182.88 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "db79dd7c-e8e7-4811-bfd9-eb4b4f7ee4dd")
@@ -13644,6 +14049,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 158.75 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
 			(at 158.75 182.88 0)
 			(effects
 				(font
@@ -13848,6 +14262,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "RC0603JR-07470RL"
+			(at 250.19 52.07 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "7eef8b2f-26c2-4ba6-9f42-a3189d304f43")
 		)
@@ -13910,6 +14333,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 38.1 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL10B105KA8NNNC"
 			(at 38.1 138.43 0)
 			(effects
 				(font
@@ -13985,6 +14417,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "CL10A475KP8NNNC"
+			(at 265.43 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "7569469f-d43f-47e5-95ab-7bbfc8da8b96")
 		)
@@ -14045,6 +14486,15 @@
 		)
 		(property "Description" "Resistor, US symbol"
 			(at 46.99 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RMCF0603FT1K00"
+			(at 46.99 64.77 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14178,6 +14628,15 @@
 			)
 		)
 		(property "Description" "Buck-Boost Converter, 1.8-5.5V Input Voltage, 1.7A Switch Current, 5V Output Voltage, VSON-10"
+			(at 57.15 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TPS63002DRCR"
 			(at 57.15 176.53 0)
 			(effects
 				(font
@@ -14348,6 +14807,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "CL21A106KOQNNNE"
+			(at 88.9 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a5aaa2f4-ee06-4c16-9dbf-aef670dd17d7")
 		)
@@ -14408,6 +14876,15 @@
 		)
 		(property "Description" "Resistor, US symbol"
 			(at 241.3 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603JR-07470RL"
+			(at 241.3 67.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
