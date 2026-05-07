@@ -22,6 +22,40 @@ A secure, wireless bike lock system controlled via a mobile web interface. Conne
   - Wakeup: 18
   - USB: COM6 (configurable in platformio.ini)
 
+## Manufacturing Files
+
+All files needed to manufacture the PCB and order parts are located in the **`hardware/`** directory:
+
+### Schematics & PCB Layout
+- **Location**: `hardware/schematics/`
+- **Files**:
+  - `RFID_bikelock.kicad_sch` - Schematic diagram
+  - `RFID_bikelock.kicad_pcb` - PCB layout
+  - `RFID_bikelock.csv` - Bill of Materials (BOM) - use this to order parts
+
+### Gerber Files (for manufacturing)
+- **Location**: `hardware/manufacturing/`
+- **Files**:
+  - `RFID_bikelock-F_Cu.gbr` - Front copper layer
+  - `RFID_bikelock-B_Cu.gbr` - Back copper layer
+  - `RFID_bikelock-F_Mask.gbr` - Front solder mask
+  - `RFID_bikelock-B_Mask.gbr` - Back solder mask
+  - `RFID_bikelock-F_Silkscreen.gbr` - Front silkscreen
+  - `RFID_bikelock-B_Silkscreen.gbr` - Back silkscreen
+  - `RFID_bikelock-Edge_Cuts.gbr` - Board edge cuts
+  - `RFID_bikelock-job.gbrjob` - Gerber job file
+
+### Drill Files
+- **Location**: `hardware/manufacturing/`
+- **Files**:
+  - `RFID_bikelock-PTH.drl` - Plated through-hole drilling
+  - `RFID_bikelock-NPTH.drl` - Non-plated through-hole drilling
+
+### To Order PCBs
+1. Use the Gerber files and drill files in `hardware/manufacturing/` 
+2. Upload all files to your PCB manufacturer (JLCPCB, PCBWay, etc.)
+3. Use the BOM (`hardware/schematics/RFID_bikelock.csv`) to order components
+
 ## Getting Started
 
 ### Prerequisites
